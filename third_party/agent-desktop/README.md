@@ -14,7 +14,28 @@ Call Desk's native adapter uses the separately published [Call Desk agent-deskto
 
 The saved patch matches the modified source used for that local build. Its recorded local validation included formatting, Clippy, host library tests and a release build. A fresh application of the public patch is separately checked before publishing it. Installing on another Mac still needs local build and permission verification.
 
-## Build the published fork
+## Install the prebuilt macOS ARM64 release
+
+Use this path on a matching Mac when the release binary can run under its normal OS permissions. This is a development build; no notarization is claimed. Source builds remain available below.
+
+```sh
+CALL_DESK_ROOT="$PWD"
+CALL_DESK_DOWNLOAD="$(mktemp -d "${TMPDIR:-/tmp}/call-desk-desktop.XXXXXX")"
+CALL_DESK_DESKTOP_ARCHIVE="$CALL_DESK_DOWNLOAD/agent-desktop-call-desk-macos-arm64.tar.gz"
+curl --fail --location \
+  'https://github.com/joewilsonai/call-desk-agent-desktop/releases/download/call-desk-macos-2026-11-02/agent-desktop-call-desk-macos-arm64.tar.gz' \
+  --output "$CALL_DESK_DESKTOP_ARCHIVE"
+printf '%s  %s\n' \
+  '9cd075469d2c86c6eb0c35b3249483e9066ab50aefaf4922300df078c8a23dab' \
+  "$CALL_DESK_DESKTOP_ARCHIVE" | shasum -a 256 -c -
+mkdir "$CALL_DESK_DOWNLOAD/bin"
+tar -xzf "$CALL_DESK_DESKTOP_ARCHIVE" -C "$CALL_DESK_DOWNLOAD/bin"
+CALL_DESK_DESKTOP_BIN="$CALL_DESK_DOWNLOAD/bin"
+```
+
+The archive includes both executables, the upstream license, fork notes and a validation report naming the exact source commit. Continue with **Install without losing the existing tool** below. If this build is unsuitable for the target Mac, use the pinned source path instead; do not bypass OS security protections to force it to run.
+
+## Build the published fork from source
 
 These commands are for an installation agent acting on the user's request. Reuse an existing verified patched build when available. Otherwise build the pinned source rather than silently substituting a current upstream release.
 
@@ -44,6 +65,7 @@ env -u AGENT_DESKTOP_HOME cargo clippy --locked \
   --all-targets -- -D warnings
 env -u AGENT_DESKTOP_HOME cargo build --release --locked -p agent-desktop
 env -u AGENT_DESKTOP_HOME cargo build --release --locked -p agent-desktop-macos --bin agent-desktop-macos-helper
+CALL_DESK_DESKTOP_BIN="$CALL_DESK_DESKTOP_SRC/target/release"
 ```
 
 Stop if patch application or checks fail. Do not use a partially built or unpatched dependency while claiming the verified build is installed.
@@ -55,9 +77,9 @@ Use a versioned directory and preserve any existing command or symlink before ch
 ```sh
 CALL_DESK_DESKTOP_PREFIX="$HOME/.local/lib/shared-call-desk/agent-desktop/b0da3bee-call-desk"
 mkdir -p "$CALL_DESK_DESKTOP_PREFIX" "$HOME/.local/bin"
-install -m 755 "$CALL_DESK_DESKTOP_SRC/target/release/agent-desktop" \
+install -m 755 "$CALL_DESK_DESKTOP_BIN/agent-desktop" \
   "$CALL_DESK_DESKTOP_PREFIX/agent-desktop"
-install -m 755 "$CALL_DESK_DESKTOP_SRC/target/release/agent-desktop-macos-helper" \
+install -m 755 "$CALL_DESK_DESKTOP_BIN/agent-desktop-macos-helper" \
   "$CALL_DESK_DESKTOP_PREFIX/agent-desktop-macos-helper"
 
 if [ -e "$HOME/.local/bin/agent-desktop" ] || [ -L "$HOME/.local/bin/agent-desktop" ]; then

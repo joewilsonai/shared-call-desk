@@ -7,5 +7,7 @@
   "reference_binary_note": "Hash of the locally verified patched build, not a promise of reproducible binary hashes across compilers or machines.",
   "fork_repository": "https://github.com/joewilsonai/call-desk-agent-desktop",
   "fork_commit": "b0da3beed1cbb267dea81cd14491d4291a6f6dd3",
-  "fork_tag": "call-desk-macos-2026-11-02"
+  "fork_tag": "call-desk-macos-2026-11-02",
+  "release_url": "https://github.com/joewilsonai/call-desk-agent-desktop/releases/tag/call-desk-macos-2026-11-02",
+  "macos_arm64_archive_sha256": "9cd075469d2c86c6eb0c35b3249483e9066ab50aefaf4922300df078c8a23dab"
 }

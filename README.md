@@ -108,7 +108,7 @@ You need:
 - **macOS 14+**. The native app build currently targets Apple Silicon.
 - **Python** and the pinned dependencies in `requirements.lock`.
 - **Google Chrome**, signed in to the Google Voice account you intend to use.
-- **Patched `agent-desktop`**, installed from [our pinned Call Desk source fork](third_party/agent-desktop/README.md) with the macOS window/identity fixes. The agent install guide now includes the complete source-build/install recipe; Rust and Xcode command-line tools are required.
+- **Patched `agent-desktop`**, installed from [our pinned Call Desk source fork](third_party/agent-desktop/README.md) with the macOS window/identity fixes. The agent guide includes a checksummed macOS ARM64 download and a pinned source-build path. Rust and Xcode command-line tools are required for source builds.
 - For voice: **ElevenLabs**, the **1Password CLI**, and two virtual audio routes using Loopback or an equivalent local setup.
 - For the Mac app: Xcode command-line tools and your own existing code-signing identity.
 
