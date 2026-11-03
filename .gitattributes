@@ -1,0 +1,2 @@
+# Preserve verbatim unified-diff context, including space-prefixed blank lines.
+third_party/agent-desktop/*.patch -whitespace

@@ -1,0 +1,11 @@
+{
+  "upstream": "https://github.com/vercel-labs/agent-desktop",
+  "base_commit": "5261b5287b5208e7c4bf3713df6f66faaaf2c4cc",
+  "patch_sha256": "00203b2c3647d58e7d2c15d2fcadb0143fac31bfcd72b860de0372c6c27b3100",
+  "license": "Apache-2.0",
+  "reference_macos_arm64_binary_sha256": "06be86339cefde75d8b952b84e9735eb5486ff6d2095396f042aa07de2fbcd3e",
+  "reference_binary_note": "Hash of the locally verified patched build, not a promise of reproducible binary hashes across compilers or machines.",
+  "fork_repository": "https://github.com/joewilsonai/call-desk-agent-desktop",
+  "fork_commit": "b0da3beed1cbb267dea81cd14491d4291a6f6dd3",
+  "fork_tag": "call-desk-macos-2026-11-02"
+}

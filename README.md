@@ -108,7 +108,7 @@ You need:
 - **macOS 14+**. The native app build currently targets Apple Silicon.
 - **Python** and the pinned dependencies in `requirements.lock`.
 - **Google Chrome**, signed in to the Google Voice account you intend to use.
-- **`agent-desktop`**, the separately maintained local native-control tool used by this prototype. It is **not included in this repository**; installation is not yet self-contained.
+- **Patched `agent-desktop`**, installed from [our pinned Call Desk source fork](third_party/agent-desktop/README.md) with the macOS window/identity fixes. The agent install guide now includes the complete source-build/install recipe; Rust and Xcode command-line tools are required.
 - For voice: **ElevenLabs**, the **1Password CLI**, and two virtual audio routes using Loopback or an equivalent local setup.
 - For the Mac app: Xcode command-line tools and your own existing code-signing identity.
 
@@ -126,7 +126,7 @@ Edit the local `config.json`: set the absolute path to `voice_bridge.py`, your E
 
 ### 2. Connect the browser and audio
 
-Build the exact-window helper:
+Install or verify the [patched native-control dependency](third_party/agent-desktop/README.md) first, then build the Call Desk exact-window helper:
 
 ```sh
 zsh build_native_focus.sh
@@ -241,6 +241,7 @@ incoming*.py                      Bounded incoming-call control
 native_focus.m                    Exact-window helper
 mac-app/                          SwiftUI/AppKit app
 plugin/ · marketplace/            Agent instructions and plugin definitions
+third_party/agent-desktop/        Pinned patch, license and dependency installer guide
 fixtures/ · test-fixtures/        Sanitized and synthetic fixtures
 test_*.py · verify_mcp.py          Offline tests and isolated protocol check
 ```

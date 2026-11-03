@@ -52,9 +52,11 @@ Never print credentials, copy them into MCP client configuration, commit local c
 
 ## 4. Check external native dependencies
 
-The browser adapter depends on `agent-desktop`, a separately maintained local command **not distributed in this repo**. Probe the normal PATH and `~/.local/bin/agent-desktop`. Use its installed help/guides for supported syntax.
+The browser adapter requires our patched `agent-desktop` dependency. Inspect the normal PATH and `~/.local/bin/agent-desktop`; a version string or generic npm installation alone does not establish that it contains our fixes.
 
-If it is absent, report **browser adapter blocked: missing agent-desktop**. Do not invent a package URL or claim that Python dependency installation makes live browser control ready.
+**If the required patched build is absent, install it by following [the pinned dependency build/install recipe](../third_party/agent-desktop/README.md).** This repository includes the exact patch, upstream revision, patch checksum and upstream license. The recipe clones the dedicated public Call Desk fork, checks out a pinned commit that already includes the patch, runs host checks, builds the command and preserves any existing installation before linking the new version. Reuse an existing verified patched build instead of replacing it unnecessarily.
+
+Complete that installation as part of the user's install request. If a prerequisite, patch application, build or independently protected permission step blocks it, report the exact failure and continue independent setup. Do not silently substitute an unpatched package or claim the browser adapter is ready. Use the installed tool's `skills get desktop`, `skills get platform` and command help after installation.
 
 For the native helper, with Xcode command-line tools available:
 

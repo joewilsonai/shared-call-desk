@@ -1,0 +1,358 @@
+diff --git a/crates/macos/src/system/window/window_ax_state.rs b/crates/macos/src/system/window/window_ax_state.rs
+index 64970a43..9cced7ab 100644
+--- a/crates/macos/src/system/window/window_ax_state.rs
++++ b/crates/macos/src/system/window/window_ax_state.rs
+@@ -62,7 +62,7 @@ fn for_each_window(
+     mut visit: impl FnMut(&crate::tree::AXElement, i64) -> Result<(), AdapterError>,
+ ) -> Result<(), AdapterError> {
+     let app = crate::tree::element_for_pid(pid);
+-    for window in crate::tree::surface_read::elements(&app, "AXWindows", deadline)? {
++    for window in crate::tree::application_windows::read(&app, deadline)? {
+         match crate::system::window::window_resolve::ax_window_id_with_deadline(&window, deadline) {
+             Ok(Some(id)) => visit(&window, id)?,
+             Ok(None) => {}
+diff --git a/crates/macos/src/system/window/window_bridge.rs b/crates/macos/src/system/window/window_bridge.rs
+index e1782f99..59b53659 100644
+--- a/crates/macos/src/system/window/window_bridge.rs
++++ b/crates/macos/src/system/window/window_bridge.rs
+@@ -108,7 +108,7 @@ fn bridge_unavailable() -> AdapterError {
+         ErrorCode::ActionNotSupported,
+         "The optional AX-to-CG window bridge is unavailable on this macOS version",
+     )
+-    .with_suggestion("Target the uniquely titled verified window, or refresh the window inventory")
++    .with_suggestion("Use a screenshot of the window; exact accessibility targeting requires the native window bridge")
+     .with_details(serde_json::json!({
+         "kind": "resolution_window_bridge_unavailable",
+         "symbol": "_AXUIElementGetWindow",
+diff --git a/crates/macos/src/system/window/window_resolve.rs b/crates/macos/src/system/window/window_resolve.rs
+index 55235770..63736a00 100644
+--- a/crates/macos/src/system/window/window_resolve.rs
++++ b/crates/macos/src/system/window/window_resolve.rs
+@@ -131,10 +131,10 @@ fn resolve_window_element_strict(
+     deadline: std::time::Instant,
+ ) -> Result<AXElement, AdapterError> {
+     crate::tree::locator_deadline::remaining(deadline)?;
+-    let (window_number, record) = locate_verified_record_until(win, deadline)?;
++    let (window_number, _) = locate_verified_record_until(win, deadline)?;
+     crate::tree::locator_deadline::remaining(deadline)?;
+     let pid = crate::system::process::process_identity::to_pid_t(win.pid)?;
+-    ax_window_element_for_number(pid, window_number, record.title.as_deref(), deadline)?
++    ax_window_element_for_number(pid, window_number, deadline)?
+         .ok_or_else(|| window_not_accessible(&win.id))
+ }
+ 
+@@ -197,68 +197,46 @@ fn window_info_from_record(
+ fn ax_window_element_for_number(
+     pid: i32,
+     window_number: i64,
+-    fallback_title: Option<&str>,
+     deadline: std::time::Instant,
+ ) -> Result<Option<AXElement>, AdapterError> {
+-    let windows = windows_for_pid(pid, deadline)?;
+-    let mut unavailable_bridge = None;
+-    for window in &windows {
+-        prepare_for_read(window, deadline)?;
+-        if crate::tree::resolve::resolve_ax_read::read_string(window, "AXRole", deadline)?
+-            .as_deref()
+-            != Some("AXWindow")
+-        {
+-            continue;
+-        }
+-        match ax_window_id_with_deadline(window, deadline) {
+-            Ok(Some(actual)) if actual == window_number => return Ok(Some(window.clone())),
+-            Ok(_) => {}
+-            Err(error) if crate::system::window::window_bridge::is_unavailable(&error) => {
+-                unavailable_bridge = Some(error);
+-                break;
+-            }
+-            Err(error) => return Err(error),
+-        }
+-    }
+-    let Some(title) = fallback_title else {
+-        return match unavailable_bridge {
+-            Some(error) => Err(error),
+-            None => Ok(None),
+-        };
+-    };
+-    let mut single_match = None;
+-    for window in windows {
++    let mut windows = Vec::new();
++    for window in windows_for_pid(pid, deadline)? {
+         prepare_for_read(&window, deadline)?;
+         if crate::tree::resolve::resolve_ax_read::read_string(&window, "AXRole", deadline)?
+             .as_deref()
+-            != Some("AXWindow")
++            == Some("AXWindow")
+         {
+-            continue;
++            windows.push(window);
+         }
+-        if crate::tree::resolve::resolve_ax_read::read_string(&window, "AXTitle", deadline)?
+-            .as_deref()
+-            != Some(title)
+-        {
++    }
++    select_window_for_number(&windows, window_number, |window| {
++        ax_window_id_with_deadline(window, deadline)
++    })
++}
++
++fn select_window_for_number<T: Clone>(
++    windows: &[T],
++    window_number: i64,
++    mut read_number: impl FnMut(&T) -> Result<Option<i64>, AdapterError>,
++) -> Result<Option<T>, AdapterError> {
++    let mut matched = None;
++    for window in windows {
++        if read_number(window)? != Some(window_number) {
+             continue;
+         }
+-        if single_match.is_some() {
++        if matched.is_some() {
+             return Err(AdapterError::ambiguous_target(format!(
+-                "Multiple AX windows matched the verified CoreGraphics title '{title}'"
++                "Multiple AX windows matched verified CoreGraphics window w-{window_number}"
+             ))
+             .with_details(serde_json::json!({
+-                "kind": "verified_window_title_ambiguous",
+-                "title": title,
++                "kind": "source_window_number_ambiguous",
++                "source_window_id": format!("w-{window_number}"),
++                "candidate_count_at_least": 2,
+             })));
+         }
+-        single_match = Some(window);
+-    }
+-    match single_match {
+-        Some(window) => Ok(Some(window)),
+-        None => match unavailable_bridge {
+-            Some(error) => Err(error),
+-            None => Ok(None),
+-        },
++        matched = Some(window.clone());
+     }
++    Ok(matched)
+ }
+ 
+ fn window_element_by_title(
+@@ -308,10 +286,7 @@ fn windows_for_pid(pid: i32, deadline: std::time::Instant) -> Result<Vec<AXEleme
+     let app = element_for_pid(pid);
+     #[cfg(target_os = "macos")]
+     {
+-        Ok(
+-            crate::tree::resolve::resolve_ax_read::read_array(&app, "AXWindows", deadline)?
+-                .unwrap_or_default(),
+-        )
++        crate::tree::application_windows::read(&app, deadline)
+     }
+     #[cfg(not(target_os = "macos"))]
+     {
+diff --git a/crates/macos/src/system/window/window_resolve_tests.rs b/crates/macos/src/system/window/window_resolve_tests.rs
+index c8c2cf76..0a8166d6 100644
+--- a/crates/macos/src/system/window/window_resolve_tests.rs
++++ b/crates/macos/src/system/window/window_resolve_tests.rs
+@@ -210,3 +210,50 @@ fn a_window_without_an_accessibility_element_is_not_reported_as_missing() {
+     assert!(error.message.contains("exists"));
+     assert_ne!(error.code, agent_desktop_core::ErrorCode::WindowNotFound);
+ }
++
++#[test]
++fn exact_window_rejects_another_native_id_with_the_same_title() {
++    let candidates = [(Some(4321), "Elle Reader Fixture")];
++    let result = select_window_for_number(&candidates, 4320, |candidate| Ok(candidate.0)).unwrap();
++
++    assert_eq!(result, None);
++}
++
++#[test]
++fn exact_window_rejects_unproven_id_even_with_a_unique_title() {
++    let candidates = [(None, "Elle Reader Fixture")];
++    let result = select_window_for_number(&candidates, 4320, |candidate| Ok(candidate.0)).unwrap();
++
++    assert_eq!(result, None);
++}
++
++#[test]
++fn exact_window_retains_a_proven_id_despite_a_changed_title() {
++    let candidates = [(Some(4321), "Same"), (Some(4320), "Renamed")];
++    let result = select_window_for_number(&candidates, 4320, |candidate| Ok(candidate.0)).unwrap();
++
++    assert_eq!(result, Some((Some(4320), "Renamed")));
++}
++
++#[test]
++fn exact_window_rejects_multiple_distinct_candidates_with_the_same_native_id() {
++    let candidates = [(Some(4320), "First"), (Some(4320), "Second")];
++    let error =
++        select_window_for_number(&candidates, 4320, |candidate| Ok(candidate.0)).unwrap_err();
++
++    assert_eq!(error.code, ErrorCode::AmbiguousTarget);
++}
++
++#[test]
++fn exact_window_preserves_native_permission_errors() {
++    let candidates = [(Some(4320), "Same")];
++    let error =
++        select_window_for_number(
++            &candidates,
++            4320,
++            |_| Err(AdapterError::permission_denied()),
++        )
++        .unwrap_err();
++
++    assert_eq!(error.code, ErrorCode::PermDenied);
++}
+diff --git a/crates/macos/src/tree/application_windows.rs b/crates/macos/src/tree/application_windows.rs
+new file mode 100644
+index 00000000..0bc490dd
+--- /dev/null
++++ b/crates/macos/src/tree/application_windows.rs
+@@ -0,0 +1,105 @@
++use agent_desktop_core::AdapterError;
++use std::time::Instant;
++
++use super::AXElement;
++
++pub(crate) fn read(app: &AXElement, deadline: Instant) -> Result<Vec<AXElement>, AdapterError> {
++    collect(
++        |attribute| super::surface_read::elements(app, attribute, deadline),
++        |attribute| super::surface_read::element(app, attribute, deadline),
++        |element| {
++            Ok(
++                super::surface_read::string(element, "AXRole", deadline)?.as_deref()
++                    == Some("AXWindow"),
++            )
++        },
++        super::same_element,
++    )
++}
++
++fn collect<T>(
++    mut read_array: impl FnMut(&str) -> Result<Vec<T>, AdapterError>,
++    mut read_element: impl FnMut(&str) -> Result<Option<T>, AdapterError>,
++    mut is_window: impl FnMut(&T) -> Result<bool, AdapterError>,
++    same: impl Fn(&T, &T) -> bool,
++) -> Result<Vec<T>, AdapterError> {
++    let mut windows = Vec::new();
++    let mut add = |candidate| -> Result<(), AdapterError> {
++        if is_window(&candidate)? && !windows.iter().any(|window| same(window, &candidate)) {
++            windows.push(candidate);
++        }
++        Ok(())
++    };
++    for candidate in read_array("AXWindows")? {
++        add(candidate)?;
++    }
++    for attribute in ["AXMainWindow", "AXFocusedWindow"] {
++        if let Some(candidate) = read_element(attribute)? {
++            add(candidate)?;
++        }
++    }
++    for candidate in read_array("AXChildren")? {
++        add(candidate)?;
++    }
++    Ok(windows)
++}
++
++#[cfg(test)]
++mod tests {
++    use super::*;
++    use agent_desktop_core::ErrorCode;
++
++    #[test]
++    fn supplements_desktop_only_window_list_with_main_and_focused_windows() {
++        let windows = collect(
++            |attribute| {
++                Ok(if attribute == "AXWindows" {
++                    vec![0]
++                } else {
++                    vec![0, 3]
++                })
++            },
++            |attribute| Ok(Some(if attribute == "AXMainWindow" { 1 } else { 2 })),
++            |candidate| Ok(*candidate != 0),
++            |a, b| a == b,
++        )
++        .unwrap();
++        assert_eq!(windows, vec![1, 2, 3]);
++    }
++
++    #[test]
++    fn duplicate_window_sources_keep_one_candidate_in_order() {
++        let windows = collect(
++            |_| Ok(vec![1, 2]),
++            |_| Ok(Some(1)),
++            |_| Ok(true),
++            |a, b| a == b,
++        )
++        .unwrap();
++        assert_eq!(windows, vec![1, 2]);
++    }
++
++    #[test]
++    fn secondary_source_permission_error_does_not_return_partial_windows() {
++        let error = collect(
++            |_| Ok(vec![1]),
++            |_| Err(AdapterError::new(ErrorCode::PermDenied, "unavailable")),
++            |_| Ok(true),
++            |a, b| a == b,
++        )
++        .unwrap_err();
++        assert_eq!(error.code, ErrorCode::PermDenied);
++    }
++
++    #[test]
++    fn role_read_error_is_preserved() {
++        let error = collect(
++            |_| Ok(vec![1]),
++            |_| Ok(None),
++            |_| Err(AdapterError::timeout("window role")),
++            |a, b| a == b,
++        )
++        .unwrap_err();
++        assert_eq!(error.code, ErrorCode::Timeout);
++    }
++}
+diff --git a/crates/macos/src/tree/mod.rs b/crates/macos/src/tree/mod.rs
+index 78251e53..f7de9b58 100644
+--- a/crates/macos/src/tree/mod.rs
++++ b/crates/macos/src/tree/mod.rs
+@@ -1,4 +1,5 @@
+ mod adapter;
++pub(crate) mod application_windows;
+ pub(crate) mod ax_element;
+ pub(crate) mod build_context;
+ pub(crate) mod child_labels;
+diff --git a/crates/macos/src/tree/resolve/resolve_ax_read.rs b/crates/macos/src/tree/resolve/resolve_ax_read.rs
+index 8e428801..7ebf0aa5 100644
+--- a/crates/macos/src/tree/resolve/resolve_ax_read.rs
++++ b/crates/macos/src/tree/resolve/resolve_ax_read.rs
+@@ -38,15 +38,6 @@ pub(crate) fn read_string(
+     crate::tree::surface_read::string(element, attribute, deadline)
+ }
+ 
+-pub(crate) fn read_array(
+-    element: &AXElement,
+-    attribute: &str,
+-    deadline: std::time::Instant,
+-) -> Result<Option<Vec<AXElement>>, AdapterError> {
+-    crate::tree::surface_read::elements(element, attribute, deadline)
+-        .map(|elements| (!elements.is_empty()).then_some(elements))
+-}
+-
+ #[cfg(target_os = "macos")]
+ pub(in crate::tree) fn read_element(
+     element: &AXElement,
+diff --git a/crates/macos/src/tree/resolve/resolve_roots.rs b/crates/macos/src/tree/resolve/resolve_roots.rs
+index 832bfe3d..d8d5c394 100644
+--- a/crates/macos/src/tree/resolve/resolve_roots.rs
++++ b/crates/macos/src/tree/resolve/resolve_roots.rs
+@@ -166,7 +166,7 @@ fn source_window_scoped_roots(
+             deadline,
+         )?;
+     }
+-    let windows = read_root_array(application, "AXWindows", context)?.unwrap_or_default();
++    let windows = crate::tree::application_windows::read(application, deadline)?;
+     let window = if entry.source.source_window_id.is_some() {
+         window_by_number(&windows, entry, context)?
+     } else {
