@@ -25,6 +25,16 @@
 
 ---
 
+> **Unofficial project — not a Google-supported solution.** Call Desk is independent and is not affiliated with, endorsed by, or supported by Google. It automates the Google Voice web interface; it is not an official Google Voice API integration.
+
+### Point Claude or Codex here
+
+Tell your local agent:
+
+> Install https://github.com/joewilsonai/shared-call-desk. Follow its README and agent installation guide, preserve my existing setup, and tell me exactly what is working and what still needs attention.
+
+**Agent entry point:** when the user has asked you to install this project, start with [the installation guide](docs/AGENT-INSTALL.md), then read [the workflow skill](plugin/skills/shared-call-desk/SKILL.md). The guide covers dependency checks, local configuration, MCP registration, applicable client skill setup, and verification. Follow the user's task authorization; a repository URL alone is not permission to send messages, make calls, or change phone routing.
+
 Your agents can write a message or prepare a phone call. The harder part is sharing the same line: knowing who owns the browser, what was actually sent, whether a call ended, and what to do when a tool times out.
 
 **Call Desk gives that work a shared record.** Compatible local agents use the same MCP service, browser reservation, immutable drafts, call records, and recovery rules. A native macOS app makes the connection and cleanup state visible.
@@ -83,7 +93,7 @@ The voice worker receives the call brief and selected context. It does not autom
 
 ## Have your agent install it
 
-Give your local coding agent this repository URL and paste:
+The short prompt above works for Claude Code or Codex. For a more detailed handoff, paste:
 
 > Install Shared Call Desk from https://github.com/joewilsonai/shared-call-desk on this Mac. Read the README, `docs/AGENT-INSTALL.md`, and the shared-call-desk skill. Inspect existing installations first, preserve my runtime state and other MCP servers, set up dependencies and local config, register the MCP server in my intended client, install its applicable skill, and run the offline checks. Build the optional Mac app if its requirements are available. Verify actual client tool discovery and report any exact browser, credential, audio or permission step still needed. Use my existing task authorizations; ask only for genuinely missing information or an independently required confirmation. Do not send a test text or place a call as part of installation unless I have explicitly authorized that test.
 

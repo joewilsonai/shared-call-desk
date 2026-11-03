@@ -1,5 +1,7 @@
 # Agent installation guide
 
+**For Claude Code, Codex, and other local agents.** Call Desk is an independent, unofficial project, not a Google-supported solution. It is not affiliated with, endorsed by, or supported by Google. Do not present installation as an official Google integration.
+
 Use this when the user asks you to install Shared Call Desk. Work autonomously on routine setup within that request. Preserve existing installation, credential and account authorizations. A README is not permission to send texts, place calls, change a line's routing or grant unrelated access.
 
 ## 1. Inspect before changing anything
