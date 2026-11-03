@@ -1,6 +1,6 @@
 {
   "name": "shared-call-desk",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "Shared local Google Voice calling and text messaging with reviewed drafts and durable recovery.",
   "author": {
     "name": "Joe Wilson"

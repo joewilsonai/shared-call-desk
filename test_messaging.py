@@ -55,7 +55,7 @@ def setup(tmp_path):
     write_json(calls.home/'google-voice-ui.json',{'app':'Google Chrome','window_id':'w-100','pid':10,
         'process_instance':'offline-process','url_prefix':'https://voice.google.com/u/0/',
         'account_label':'Offline account','voice_number':'+15555550000'})
-    texts=TextService(calls,clock=lambda:1000.)
+    texts=TextService(calls,clock=lambda:1000.,sleeper=lambda _:None)
     ui=FakeUI(texts.source(),texts.clock);texts.adapter=ui
     return texts,ui,calls
 
@@ -225,7 +225,7 @@ def test_sent_candidate_requires_stable_reobservation(setup):
         nonlocal count
         count+=1
         observation=original()
-        if count==2:observation['messages']=[m for m in observation['messages'] if m['message_id']!='new-message']
+        if count%2==0:observation['messages']=[m for m in observation['messages'] if m['message_id']!='new-message']
         return observation
     ui.observe_conversation=changing
     assert send(texts,created)['phase']=='send_unknown'
@@ -301,3 +301,74 @@ def test_confirmation_cannot_turn_unsent_or_changed_draft_into_sent(setup):
         ('test-owner',created['digest'],'recipient_confirmation','send_intent')]:
         with pytest.raises(TextError,match=code):texts.confirm_sent(created['draft_id'],owner,digest,kind,'External evidence of the exact message.')
     assert texts.get(created['draft_id'])['phase']=='draft' and not ui.calls
+
+
+def test_send_waits_for_delayed_bubble_without_a_second_click(setup,monkeypatch):
+    texts,ui,_=setup;created=draft(texts);original=ui.observe_conversation
+    reads=[]
+    def delayed():
+        seen=original();reads.append(True)
+        if len(reads)<4:seen['messages']=seen['messages'][:1]
+        return seen
+    monkeypatch.setattr(ui,'observe_conversation',delayed)
+    result=send(texts,created)
+    assert result['phase']=='sent_observed' and result['verification_checks']>=2
+    assert ui.calls.count('send')==1 and ui.calls.count('read')>=1
+
+
+def test_send_runs_status_refresh_when_only_reopening_reveals_receipt(setup,monkeypatch):
+    texts,ui,_=setup;created=draft(texts);original=ui.observe_conversation
+    opened={'value':False}
+    def observed():
+        seen=original()
+        if not opened['value']:seen['messages']=seen['messages'][:1]
+        return seen
+    def verified_reader(identifier,recipient):
+        assert identifier=='thread-one' and recipient==created['recipient']
+        opened['value']=True;ui.calls.append('verified_read');return observed()
+    monkeypatch.setattr(ui,'observe_conversation',observed)
+    monkeypatch.setattr(ui,'read_verified_recipient',verified_reader,raising=False)
+    result=send(texts,created)
+    assert result['phase']=='sent_observed' and result['verification_checks']==2
+    assert ui.calls.count('send')==1 and ui.calls.count('verified_read')==1
+
+
+def test_send_recovers_transient_navigation_error_by_reading_only(setup,monkeypatch):
+    texts,ui,_=setup;created=draft(texts);original=ui.observe_conversation
+    reads=[]
+    def observed():
+        reads.append(True)
+        if len(reads)==1:raise TextError('message_navigation_not_settled')
+        return original()
+    monkeypatch.setattr(ui,'observe_conversation',observed)
+    result=send(texts,created)
+    assert result['phase']=='sent_observed' and result['verification_checks']==2
+    assert 'error_code' not in result and 'verification_last_error' not in result
+    assert ui.calls.count('send')==1
+
+
+def test_permanent_uncertainty_is_bounded_and_never_resends(setup):
+    texts,ui,_=setup;ui.mode='no_new';created=draft(texts)
+    result=send(texts,created)
+    assert result['phase']=='send_unknown' and result['verification_checks']==4
+    assert ui.calls.count('send')==1 and ui.calls.count('read')==3
+    assert send(texts,created)['replayed'] and ui.calls.count('send')==1
+
+
+def test_post_send_account_mismatch_stops_without_reopening(setup,monkeypatch):
+    texts,ui,_=setup;created=draft(texts);original=ui.observe_conversation
+    def observed():
+        result=original();result['account_label']='Wrong account';return result
+    monkeypatch.setattr(ui,'observe_conversation',observed)
+    result=send(texts,created)
+    assert result['phase']=='send_unknown' and result['error_code']=='message_source_identity_changed'
+    assert result['verification_checks']==1 and 'read' not in ui.calls
+    assert ui.calls.count('send')==1
+
+
+def test_receipt_check_deadline_stops_further_reads(setup):
+    texts,ui,_=setup;ui.mode='no_new';ticks=iter([0,0,21])
+    texts.monotonic=lambda:next(ticks)
+    result=send(texts,draft(texts))
+    assert result['phase']=='send_unknown' and result['verification_checks']==1
+    assert ui.calls.count('send')==1 and 'read' not in ui.calls

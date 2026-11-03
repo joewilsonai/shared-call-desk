@@ -5,7 +5,7 @@ from mcp.types import ToolAnnotations
 from service import CallService
 
 service=CallService()
-mcp=MCPServer('shared-call-desk',version='0.3.1',instructions=(
+mcp=MCPServer('shared-call-desk',version='0.3.2',instructions=(
     'A same-Mac call and text coordinator. Outgoing call browser operations remain with the calling agent. '
     'Read call_preflight including audio_cleanup_policy; prepare an authorized recipient and brief; start voice, '
     'wait for ready_to_dial, record one dial intent, then perform one browser click. Stop voice, verify browser '
@@ -150,7 +150,7 @@ def text_draft(owner:str,request_key:str,recipient:str,body:str,reply_to_message
 @mcp.tool(annotations=START)
 @text_errors
 def text_send(draft_id:str,owner:str,expected_digest:str,authorization:str)->dict:
-    """Send the exact reviewed draft only with explicit user authorization covering recipient and body. Requires the returned draft digest and a free, verified enrolled browser. Persists one send intent before one click; never retries uncertain dispatch. sent_observed is UI evidence, not delivery/read confirmation. Inspect text_status after uncertainty; never create another draft to resend automatically."""
+    """Send the exact reviewed draft only with explicit user authorization covering recipient and body. Requires the returned draft digest and a free, verified enrolled browser. Persists one send intent before one click, then runs bounded read-only receipt checks, including the same exact-recipient reopen as a status refresh; never retries uncertain dispatch. sent_observed is UI evidence, not delivery/read confirmation. Inspect text_status after uncertainty; never create another draft to resend automatically."""
     return text_service().send(draft_id,owner,expected_digest,authorization)
 
 @mcp.tool(annotations=TEXT_READ)

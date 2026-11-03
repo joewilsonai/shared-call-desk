@@ -8,10 +8,10 @@
 </p>
 
 <p align="center">
-  <img alt="Service version 0.3.1" src="https://img.shields.io/badge/service-0.3.1-1f6feb?style=flat-square" />
+  <img alt="Service version 0.3.2" src="https://img.shields.io/badge/service-0.3.2-1f6feb?style=flat-square" />
   <img alt="macOS 14 or later" src="https://img.shields.io/badge/macOS-14%2B-111827?style=flat-square" />
   <img alt="22 MCP tools" src="https://img.shields.io/badge/MCP-22_tools-7c3aed?style=flat-square" />
-  <img alt="484 tests passed locally" src="https://img.shields.io/badge/local_tests-484_passed-238636?style=flat-square" />
+  <img alt="490 tests passed locally" src="https://img.shields.io/badge/local_tests-490_passed-238636?style=flat-square" />
   <img alt="Prototype" src="https://img.shields.io/badge/status-prototype-d29922?style=flat-square" />
 </p>
 
@@ -29,7 +29,7 @@ Your agents can write a message or prepare a phone call. The harder part is shar
 
 **Call Desk gives that work a shared record.** Compatible local agents use the same MCP service, browser reservation, immutable drafts, call records, and recovery rules. A native macOS app makes the connection and cleanup state visible.
 
-> **Current release:** service/plugin **0.3.1**, Mac app **0.1.6**. Outgoing voice and SMS have been exercised locally. Incoming answering is experimental. The native browser adapter can still need a visible, foreground window; background operation is the next major step.
+> **Current release:** service/plugin **0.3.2**, Mac app **0.1.6**. Outgoing voice and SMS have been exercised locally. Incoming answering is experimental. The native browser adapter can still need a visible, foreground window; background operation is the next major step.
 
 ## What it does
 
@@ -80,6 +80,14 @@ flowchart TD
 Everything runs on the same Mac. The operating agent handles outgoing browser dialing; the service owns the audio worker and call record. The native adapter handles live texts and the experimental incoming-call path.
 
 The voice worker receives the call brief and selected context. It does not automatically inherit the operating agent’s entire chat, memory, or computer tools.
+
+## Have your agent install it
+
+Give your local coding agent this repository URL and paste:
+
+> Install Shared Call Desk from https://github.com/joewilsonai/shared-call-desk on this Mac. Read the README, `docs/AGENT-INSTALL.md`, and the shared-call-desk skill. Inspect existing installations first, preserve my runtime state and other MCP servers, set up dependencies and local config, register the MCP server in my intended client, install its applicable skill, and run the offline checks. Build the optional Mac app if its requirements are available. Verify actual client tool discovery and report any exact browser, credential, audio or permission step still needed. Use my existing task authorizations; ask only for genuinely missing information or an independently required confirmation. Do not send a test text or place a call as part of installation unless I have explicitly authorized that test.
+
+The [agent installation guide](docs/AGENT-INSTALL.md) contains the commands, configuration fields, verification steps and recovery boundaries. It explicitly identifies the external native dependency and distinguishes a configured MCP server from a live, connected phone desk.
 
 ## Get started
 
@@ -162,7 +170,7 @@ The app looks for the runtime at `~/CodingProjects/shared-call-desk`. Set `CALL_
 
 ## The MCP interface
 
-The running server’s schemas are the source of truth. Version 0.3.1 exposes **22 tools**:
+The running server’s schemas are the source of truth. Version 0.3.2 exposes **22 tools**:
 
 | Group | Tools |
 | --- | --- |
@@ -183,7 +191,7 @@ Read the [workflow skill](plugin/skills/shared-call-desk/SKILL.md) and [tool/evi
 
 ## Validation
 
-**484 Python tests passed locally** for the source exported into this repository. A separate real stdio MCP smoke check exercises local drafts, structured blocking errors, and audited confirmation in isolated synthetic state. Native helper and app builds run their own offline fixtures.
+**490 Python tests passed locally** for the source exported into this repository. A separate real stdio MCP smoke check exercises local drafts, structured blocking errors, and audited confirmation in isolated synthetic state. Native helper and app builds run their own offline fixtures.
 
 ```sh
 .venv/bin/python -m pytest -q --disable-warnings
@@ -201,14 +209,14 @@ The smoke check places **no real calls or texts**. The badge above reflects a lo
 | Recovery logic | Offline tests and the isolated MCP check cover shared ownership, uncertain dispatch, evidence records, and explicit cleanup. |
 | Incoming answering | Experimental. A completed end-to-end automatic incoming call remains unverified. |
 | Native browser control | Requires the enrolled window/process/account. Foreground access and macOS Spaces can interrupt automation. |
-| Automatic receipts | The post-send header parser is updated and tested; the new automatic path still needs a fresh live test. Independent confirmation remains explicitly labeled. |
+| Automatic receipts | The send call now runs bounded receipt verification automatically, including the same recipient-bound reopen used by status refresh. Delayed confirmation and recovery are tested offline; a fresh live send still needs to validate this change. Independent confirmation remains explicitly labeled. |
 | Restart recovery | Browser identity, sign-in, permissions, and provider authorization can need reconnection. |
 
 ### Next: stop borrowing your desktop
 
 The next major step is a **dedicated background browser** controlled directly by the service. The planned sequence is inbox reads, one authorized send plus reply, then voice/audio and restart recovery. Background operation has not been implemented in this release.
 
-Read the [background-browser plan](BACKGROUND-BROWSER-PLAN.md).
+Read the [V2 implementation plan](docs/V2-PLAN.md) for milestones, architecture, acceptance gates, and the restricted call-lane design. The earlier [background-browser note](BACKGROUND-BROWSER-PLAN.md) records the initial proposal.
 
 ## Repository map
 

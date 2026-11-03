@@ -47,10 +47,11 @@ def phone(value):
 
 
 class TextService:
-    def __init__(self,call_service,adapter=None,*,clock=time.time,browser=None):
+    def __init__(self,call_service,adapter=None,*,clock=time.time,browser=None,sleeper=time.sleep,monotonic=time.monotonic):
         self.calls=call_service;self.home=Path(call_service.home)
         self.directory=self.home/'messages';self.directory.mkdir(mode=0o700,exist_ok=True)
         self.adapter=adapter;self.clock=clock;self.browser=browser
+        self.sleeper=sleeper;self.monotonic=monotonic
 
     @contextlib.contextmanager
     def locked(self):
@@ -105,7 +106,7 @@ class TextService:
     @staticmethod
     def public(record):
         fields=('draft_id','owner','recipient','body','reply_to_message_id','conversation_id','digest','phase',
-                'created_at','updated_at','error_code','sent_message_id','browser_cleanup_verified','browser_cleanup_error_code','confirmation')
+                'created_at','updated_at','error_code','sent_message_id','browser_cleanup_verified','browser_cleanup_error_code','confirmation','verification_checks','verification_last_error')
         return {key:record[key] for key in fields if key in record}|{'delivery_status':record.get('delivery_status','not_verified')}
 
     def valid(self,observation,source,view=None):
@@ -287,6 +288,40 @@ class TextService:
         record.pop('error_code',None);self.cache_conversation(reobservation,record['source'])
         return True
 
+    def check_send_receipt(self,record,adapter,*,reopen):
+        if reopen:
+            reader=getattr(adapter,'read_verified_recipient',None)
+            first=(reader(record['send_intent']['conversation_id'],record['recipient']) if callable(reader)
+                   else adapter.read(record['send_intent']['conversation_id']))
+        else:first=adapter.observe_conversation()
+        self.conversation(first,record['source'],record['recipient'])
+        if first['conversation_id']!=record['send_intent']['conversation_id']:raise TextError('conversation_changed')
+        second=adapter.observe_conversation()
+        confirmed=self.sent_proof(record,first,second)
+        if confirmed:record.pop('verification_last_error',None)
+        self.save(record)
+        return confirmed
+
+    def check_after_send(self,record,adapter):
+        # Reuse the status-refresh check inside the original browser lease.
+        # A check may reopen only this immutable recipient. It never sends.
+        transient={'message_navigation_not_settled','message_recipients_unverified',
+                   'message_details_ambiguous','message_composer_ambiguous','message_page_ambiguous',
+                   'native_observation_incomplete_or_wrong_window','STALE_REF'}
+        deadline=self.monotonic()+20
+        for attempt in range(4):
+            if attempt and self.monotonic()>=deadline:break
+            record['verification_checks']=attempt+1;self.save(record)
+            try:
+                if self.check_send_receipt(record,adapter,reopen=attempt>0):return
+            except Exception as exc:
+                code=safe_code(exc)
+                if code not in transient:raise
+                record['verification_last_error']=code;self.save(record)
+            if attempt<3 and self.monotonic()<deadline:self.sleeper(0.4)
+        if record.get('verification_last_error'):record['error_code']=record['verification_last_error']
+        self.save(record)
+
     def send(self,draft_id,owner,expected_digest,authorization):
         owner=text(owner,'owner',120);text(authorization,'authorization',3000)
         fd=self.operation_lock(draft_id)
@@ -335,11 +370,7 @@ class TextService:
             self.save(record)  # Durable before the only permitted send click.
             adapter.click_send()
             record['phase']='send_unknown';self.save(record)
-            # Sending can replace the editable recipient chips with a normal
-            # conversation header. Reopen the same verified conversation for
-            # proof, as in reconciliation; this never dispatches another send.
-            first=adapter.observe_conversation()
-            self.sent_proof(record,first,adapter.observe_conversation());self.save(record)
+            self.check_after_send(record,adapter)
         try:self.browser_session(owner,record['source'],dispatch,cleanup)
         except Exception as exc:
             if record['phase'] not in ('sent_observed','sent_confirmed'):
@@ -360,13 +391,7 @@ class TextService:
         if not refresh or not record.get('send_intent') or record['phase'] in ('sent_observed','sent_confirmed'):return self.public(record)
         if self.source()!=record['source']:raise TextError('message_source_identity_changed')
         def inspect(adapter):
-            reader=getattr(adapter,'read_verified_recipient',None)
-            seen=(reader(record['send_intent']['conversation_id'],record['recipient']) if callable(reader)
-                  else adapter.read(record['send_intent']['conversation_id']))
-            self.conversation(seen,record['source'],record['recipient'])
-            if seen['conversation_id']!=record['send_intent']['conversation_id']:raise TextError('conversation_changed')
-            self.cache_conversation(seen,record['source'])
-            self.sent_proof(record,seen,adapter.observe_conversation());self.save(record)
+            self.check_send_receipt(record,adapter,reopen=True)
         def cleanup(done,code):
             record['browser_cleanup_verified']=done
             if code:record['browser_cleanup_error_code']=code
