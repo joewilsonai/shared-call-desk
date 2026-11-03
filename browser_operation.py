@@ -15,6 +15,12 @@ import uuid
 from service import CallError,read_json,now,text_value
 from audio_policy import lease_released
 
+class BrowserOperationError(CallError):
+    def __init__(self,code,message):
+        self.code=code
+        super().__init__(message)
+
+
 IDENTITY_FIELDS=('app','window_id','pid','process_instance','url_prefix','account_label')
 
 
@@ -22,7 +28,7 @@ def require_browser_available(registry):
     operation=registry.get('browser_operation')
     if operation is not None:
         owner=operation.get('owner','unknown') if isinstance(operation,dict) else 'unknown'
-        raise CallError('Browser is reserved by '+str(owner)+'; verify navigation cleanup before another operation')
+        raise BrowserOperationError('browser_operation_active','Browser is reserved by '+str(owner)+'; verify navigation cleanup before another operation')
 
 
 def _watcher_running(home):
@@ -58,7 +64,7 @@ class BrowserOperation:
         try:
             try:fcntl.flock(fd,fcntl.LOCK_EX|fcntl.LOCK_NB)
             except BlockingIOError:
-                raise CallError('Browser setup, cleanup, or messaging is already in progress') from None
+                raise BrowserOperationError('browser_operation_in_progress','Browser setup, cleanup, or messaging is already in progress') from None
             self._session_held=True
             try:yield
             finally:self._session_held=False

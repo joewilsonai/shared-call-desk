@@ -372,3 +372,19 @@ def test_receipt_check_deadline_stops_further_reads(setup):
     result=send(texts,draft(texts))
     assert result['phase']=='send_unknown' and result['verification_checks']==1
     assert ui.calls.count('send')==1 and 'read' not in ui.calls
+
+
+def test_source_navigation_timeout_can_cleanup_without_replaying_message_action(setup):
+    texts,ui,calls=setup
+    def fail():
+        ui.calls.append('source');raise TextError('message_navigation_not_settled')
+    def restore():
+        ui.calls.append('recover_source_timeout')
+        return ui.observation('calls',state='idle',evidence='Verified exact source and idle Calls after navigation timeout')
+    ui.inspect_source=fail;ui.restore_after_source_timeout=restore
+    with pytest.raises(TextError,match='message_navigation_not_settled'):texts.inbox(refresh=True)
+    assert ui.calls==['source','recover_source_timeout']
+    assert read_json(calls.home/'registry.json')['browser_operation'] is None
+    diagnostic=read_json(calls.home/'messages/last-browser-error.json')
+    assert diagnostic['primary_error_code']=='message_navigation_not_settled'
+    assert diagnostic['browser_cleanup_verified'] is True

@@ -1,6 +1,6 @@
 # Call Desk V2 — a background service your agents can share
 
-**Status:** proposed implementation plan. V2 is not shipped. The current service remains 0.3.2; the Mac app remains 0.1.6.
+**Status:** proposed implementation plan. V2 is not shipped. The current service remains 0.3.3; the Mac app remains 0.1.6.
 
 ## Outcome
 

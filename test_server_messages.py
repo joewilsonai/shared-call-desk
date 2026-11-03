@@ -62,3 +62,16 @@ def test_blocked_send_returns_specific_error_and_blocking_draft(adapter,monkeypa
     assert result['error']['code']=='prior_send_outcome_unresolved'
     assert result['error']['blocking_draft_id']=='text_previous'
     assert result['error']['automatic_resend_allowed'] is False
+
+
+def test_held_reservation_exposes_specific_code_instead_of_callerror(adapter,monkeypatch):
+    from browser_operation import require_browser_available
+    server,_=adapter
+    class Blocked:
+        def send(self,*args,**kwargs):
+            require_browser_available({'browser_operation':{'owner':'luna','token':'browser_fixture'}})
+    monkeypatch.setattr(server,'text_service',lambda:Blocked())
+    result=server.text_send('draft','owner','digest','Authorized exact message')
+    assert result['ok'] is False
+    assert result['error']['code']=='browser_operation_active'
+    assert result['error']['automatic_resend_allowed'] is False

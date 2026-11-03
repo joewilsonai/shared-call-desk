@@ -189,10 +189,16 @@ class TextService:
                 cleaned=False;code=None;cleanup_stage='source_verification'
                 try:
                     if security_denied:raise TextError('message_security_denial_requires_review')
-                    if not source_verified:raise TextError('message_source_unverified_before_cleanup')
-                    self.valid(adapter.inspect_source(),source)
-                    cleanup_stage='restore_calls'
-                    proof=self.valid(adapter.restore_calls(),source,'calls')
+                    if not source_verified:
+                        recover=getattr(adapter,'restore_after_source_timeout',None)
+                        if safe_code(primary_error)!='message_navigation_not_settled' or not callable(recover):
+                            raise TextError('message_source_unverified_before_cleanup')
+                        cleanup_stage='recover_source_navigation'
+                        proof=self.valid(recover(),source,'calls')
+                    else:
+                        self.valid(adapter.inspect_source(),source)
+                        cleanup_stage='restore_calls'
+                        proof=self.valid(adapter.restore_calls(),source,'calls')
                     if proof.get('state')!='idle':raise TextError('calls_page_not_idle')
                     evidence=text(proof.get('evidence'),'cleanup_evidence',2000)
                     cleanup_stage='release'

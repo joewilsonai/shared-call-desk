@@ -5,7 +5,7 @@ from mcp.types import ToolAnnotations
 from service import CallService
 
 service=CallService()
-mcp=MCPServer('shared-call-desk',version='0.3.2',instructions=(
+mcp=MCPServer('shared-call-desk',version='0.3.3',instructions=(
     'A same-Mac call and text coordinator. Outgoing call browser operations remain with the calling agent. '
     'Read call_preflight including audio_cleanup_policy; prepare an authorized recipient and brief; start voice, '
     'wait for ready_to_dial, record one dial intent, then perform one browser click. Stop voice, verify browser '
@@ -41,7 +41,8 @@ def text_errors(function):
             messages={
                 'prior_send_outcome_unresolved':'An earlier send to this number is unresolved. Inspect the blocking draft or record independent confirmation with text_confirm_sent. Do not resend the earlier message.',
                 'message_navigation_not_settled':'Google Voice did not finish changing pages. Inspect the message status and browser cleanup; do not repeat a send.',
-                'browser_operation_active':'The shared browser is reserved. Inspect call_preflight before another live operation.'}
+                'browser_operation_active':'The shared browser is reserved. Inspect call_preflight for its owner and operation token; verify cleanup before another live operation.',
+                'browser_operation_in_progress':'Another browser setup, cleanup, or messaging operation is still running. Inspect its status before another live operation.'}
             error={'code':code,'message':messages.get(code,'Messaging stopped: '+code.replace('_',' ')),
                    'automatic_resend_allowed':False}
             blocker=getattr(exc,'blocking_draft_id',None)

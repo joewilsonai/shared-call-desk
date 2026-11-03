@@ -5,7 +5,7 @@ description: Use the local Shared Call Desk MCP for Google Voice calling, bounde
 
 # Shared Call Desk
 
-Version 0.3.2. Use this workflow when the user asks an agent to make a phone call, answer allowed incoming calls, manage a call already in progress, inspect a prior call result, or read and send authorized text messages. The MCP coordinates the local audio engine and durable call record. For outgoing calls, the client agent operates Google Voice through its supported computer-use tools. For an explicitly armed incoming window, the bounded watcher uses the enrolled native UI adapter to answer and clean up eligible calls.
+Version 0.3.3. Use this workflow when the user asks an agent to make a phone call, answer allowed incoming calls, manage a call already in progress, inspect a prior call result, or read and send authorized text messages. The MCP coordinates the local audio engine and durable call record. For outgoing calls, the client agent operates Google Voice through its supported computer-use tools. For an explicitly armed incoming window, the bounded watcher uses the enrolled native UI adapter to answer and clean up eligible calls.
 
 The plugin uses the existing signed-in browser and the Mac's Loopback devices. It does not supply a remote phone API or browser login. Outgoing dialing and exceptional recovery need the operating agent's computer-use tools; incoming automation uses the installed native adapter on this same Mac. A remote-only client does not acquire access to that hardware. Do not report a connected phone call merely because the audio worker started.
 

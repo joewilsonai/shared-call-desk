@@ -36,7 +36,8 @@ class GoogleVoiceMessages:
     def _wait_view(self,*sections):
         # A click receipt can precede both SPA rendering and the AX update.
         # Poll only fresh reads; never replay the action or tolerate a wrong account.
-        for attempt in range(4):
+        deadline=time.monotonic()+15
+        while True:
             web,payload=self._read()
             section=next((s for s in sections if web.get('name')=='Voice - '+s.title()),None)
             try:
@@ -44,8 +45,10 @@ class GoogleVoiceMessages:
                 native_message_page(payload,section=section,**self._options())
                 return web,payload
             except TextError as exc:
-                if exc.code not in ('message_navigation_not_settled','message_origin_changed','message_page_ambiguous') or attempt==3:raise
-                time.sleep(0.2)
+                if exc.code not in ('message_navigation_not_settled','message_origin_changed','message_page_ambiguous'):raise
+                remaining=deadline-time.monotonic()
+                if remaining<=0:raise
+                time.sleep(min(0.2,remaining))
 
     def _wrap(self,parsed):
         if self.line_verified_at is None or self.clock()-self.line_verified_at>300:
@@ -88,9 +91,9 @@ class GoogleVoiceMessages:
                 self._click_named('Settings');_,payload=self._wait_view('settings')
             source=parse_native_source_line(payload,**self._options())
             if source['voice_number']!=self.config['voice_number']:raise TextError('message_source_line_changed')
+            self.line_verified_at=self.clock()
             self._click_ref(payload,source['close_ref'])
             web,_=self._wait_view('calls','messages');self._check_no_call(web)
-            self.line_verified_at=self.clock()
         else:
             web,_=self._read();self._check_no_call(web)
         return self._wrap({'view':'source'})
@@ -219,10 +222,23 @@ class GoogleVoiceMessages:
                 'voice_number':self.config['voice_number'],'coverage':'complete','observed_at':self.clock(),
                 'view':'calls','state':'idle','evidence':snap['evidence']}
 
+    def restore_after_source_timeout(self):
+        """Recover only a verified source transition; never prepare or send SMS."""
+        web,payload=self._read();self._check_no_call(web)
+        if self.line_verified_at is None:
+            if web.get('name')!='Voice - Settings':
+                raise TextError('message_source_unverified_before_cleanup')
+            source=parse_native_source_line(payload,**self._options())
+            if source['voice_number']!=self.config['voice_number']:
+                raise TextError('message_source_line_changed')
+            self.line_verified_at=self.clock()
+        return self.restore_calls()
+
     def restore_calls(self):
         web,payload=self._read();self._check_no_call(web)
         if web.get('name')=='Voice - Settings':
             source=parse_native_source_line(payload,**self._options())
+            if source['voice_number']!=self.config['voice_number']:raise TextError('message_source_line_changed')
             self._click_ref(payload,source['close_ref']);web,payload=self._wait_view('calls','messages')
         fields=[node for node in walk(web) if node.get('role')=='textfield' and node.get('name')=='Type a message']
         if fields and fields[0].get('value',''):
@@ -235,8 +251,11 @@ class GoogleVoiceMessages:
         self._click_named('Calls','radiobutton')
         # Navigation and the AX call panel settle asynchronously. Retry only
         # observation of this transition, never the click or any send action.
-        for attempt in range(3):
+        deadline=time.monotonic()+10
+        while True:
             try:return self.verify_calls_idle()
             except TextError as exc:
-                if exc.code!='calls_page_not_verified_idle' or attempt==2:raise
-                time.sleep(0.25)
+                if exc.code!='calls_page_not_verified_idle':raise
+                remaining=deadline-time.monotonic()
+                if remaining<=0:raise
+                time.sleep(min(0.25,remaining))

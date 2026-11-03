@@ -8,10 +8,10 @@
 </p>
 
 <p align="center">
-  <img alt="Service version 0.3.2" src="https://img.shields.io/badge/service-0.3.2-1f6feb?style=flat-square" />
+  <img alt="Service version 0.3.3" src="https://img.shields.io/badge/service-0.3.3-1f6feb?style=flat-square" />
   <img alt="macOS 14 or later" src="https://img.shields.io/badge/macOS-14%2B-111827?style=flat-square" />
   <img alt="22 MCP tools" src="https://img.shields.io/badge/MCP-22_tools-7c3aed?style=flat-square" />
-  <img alt="490 tests passed locally" src="https://img.shields.io/badge/local_tests-490_passed-238636?style=flat-square" />
+  <img alt="498 tests passed locally" src="https://img.shields.io/badge/local_tests-498_passed-238636?style=flat-square" />
   <img alt="Prototype" src="https://img.shields.io/badge/status-prototype-d29922?style=flat-square" />
 </p>
 
@@ -39,7 +39,7 @@ Your agents can write a message or prepare a phone call. The harder part is shar
 
 **Call Desk gives that work a shared record.** Compatible local agents use the same MCP service, browser reservation, immutable drafts, call records, and recovery rules. A native macOS app makes the connection and cleanup state visible.
 
-> **Current release:** service/plugin **0.3.2**, Mac app **0.1.6**. Outgoing voice and SMS have been exercised locally. Incoming answering is experimental. The native browser adapter can still need a visible, foreground window; background operation is the next major step.
+> **Current release:** service/plugin **0.3.3**, Mac app **0.1.6**. Outgoing voice and SMS have been exercised locally. Incoming answering is experimental. The native browser adapter can still need a visible, foreground window; background operation is the next major step.
 
 ## What it does
 
@@ -180,7 +180,9 @@ The app looks for the runtime at `~/CodingProjects/shared-call-desk`. Set `CALL_
 
 ## The MCP interface
 
-The running server’s schemas are the source of truth. Version 0.3.2 exposes **22 tools**:
+SMS page changes now use bounded observation deadlines instead of a four-read cutoff. A source-verification navigation timeout can clean up only after verifying the enrolled account, Voice number, and idle Calls page. Security failures and unverified drafts retain the reservation. Browser conflicts return `browser_operation_active` or `browser_operation_in_progress`, and a failed operation never automatically retries a send.
+
+The running server’s schemas are the source of truth. Version 0.3.3 exposes **22 tools**:
 
 | Group | Tools |
 | --- | --- |
@@ -201,7 +203,7 @@ Read the [workflow skill](plugin/skills/shared-call-desk/SKILL.md) and [tool/evi
 
 ## Validation
 
-**490 Python tests passed locally** for the source exported into this repository. A separate real stdio MCP smoke check exercises local drafts, structured blocking errors, and audited confirmation in isolated synthetic state. Native helper and app builds run their own offline fixtures.
+**498 Python tests passed locally** for the source exported into this repository. A separate real stdio MCP smoke check exercises local drafts, structured blocking errors, and audited confirmation in isolated synthetic state. Native helper and app builds run their own offline fixtures.
 
 ```sh
 .venv/bin/python -m pytest -q --disable-warnings
