@@ -1,0 +1,27 @@
+# Private local runtime and credentials
+config.json
+.env
+.env.*
+state/
+ui-evidence/
+installation-backups/
+*.log
+*.jsonl
+*.db
+*.sqlite*
+# Environments and generated outputs
+.venv/
+venv/
+__pycache__/
+.pytest_cache/
+*.pyc
+native-build/
+dist/
+mac-app/build/
+mac-app/archives/
+mac-app/installation.json
+mac-app/*backup*
+.DS_Store
+mcp-verification.json
+verification*.json
+*.xml

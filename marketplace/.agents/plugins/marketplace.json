@@ -1,0 +1,20 @@
+{
+  "name": "elle-call-tools",
+  "interface": {
+    "displayName": "Elle Call Tools"
+  },
+  "plugins": [
+    {
+      "name": "shared-call-desk",
+      "source": {
+        "source": "local",
+        "path": "./shared-call-desk"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

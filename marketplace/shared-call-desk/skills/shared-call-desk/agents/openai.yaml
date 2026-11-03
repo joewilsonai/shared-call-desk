@@ -1,0 +1,4 @@
+interface:
+  display_name: "Shared Call Desk"
+  short_description: "Call or answer allowed callers"
+  default_prompt: "Use Shared Call Desk for my authorized outgoing call or bounded incoming answering, then report the verified outcome."

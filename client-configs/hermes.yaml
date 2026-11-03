@@ -1,0 +1,4 @@
+mcp_servers:
+  shared-call-desk:
+    command: "/absolute/path/to/shared-call-desk/.venv/bin/python"
+    args: ["/absolute/path/to/shared-call-desk/server.py"]

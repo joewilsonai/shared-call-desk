@@ -1,0 +1,30 @@
+{
+  "name": "shared-call-desk",
+  "version": "0.3.1",
+  "description": "Shared local Google Voice calling and text messaging with reviewed drafts and durable recovery.",
+  "author": {
+    "name": "Joe Wilson"
+  },
+  "license": "UNLICENSED",
+  "keywords": [
+    "voice",
+    "calls",
+    "mcp",
+    "local",
+    "agents"
+  ],
+  "mcpServers": "./.mcp.json",
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Shared Call Desk",
+    "shortDescription": "One shared local calling desk",
+    "longDescription": "Coordinate authorized Google Voice calls through a shared local ElevenLabs audio bridge. Reserve one call at a time, supply a focused brief, and review results. Outgoing calls use the operating agent's browser tools. Bounded incoming allowlist answering uses an enrolled native UI adapter on the same Mac and requires verified live controls. Incoming answering remains beta; a successful live automatic answer has not been verified.",
+    "developerName": "Joe Wilson",
+    "category": "Productivity",
+    "capabilities": [
+      "Read",
+      "Write"
+    ],
+    "defaultPrompt": "Use Shared Call Desk to prepare my authorized call and report the verified result."
+  }
+}

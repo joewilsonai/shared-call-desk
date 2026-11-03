@@ -1,0 +1,5 @@
+[mcp_servers.shared-call-desk]
+command = "/absolute/path/to/shared-call-desk/.venv/bin/python"
+args = ["/absolute/path/to/shared-call-desk/server.py"]
+startup_timeout_sec = 30
+tool_timeout_sec = 90

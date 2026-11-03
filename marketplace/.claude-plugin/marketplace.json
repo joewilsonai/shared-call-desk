@@ -1,0 +1,18 @@
+{
+  "name": "elle-call-tools",
+  "description": "Local shared call coordination for compatible agents on this Mac.",
+  "owner": {
+    "name": "Joe Wilson"
+  },
+  "plugins": [
+    {
+      "name": "shared-call-desk",
+      "description": "Shared local Google Voice calls and authorized text messaging.",
+      "version": "0.3.1",
+      "source": "./shared-call-desk",
+      "author": {
+        "name": "Joe Wilson"
+      }
+    }
+  ]
+}

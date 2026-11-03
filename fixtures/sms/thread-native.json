@@ -1,0 +1,2334 @@
+{
+  "command": "snapshot",
+  "data": {
+    "app": "Google Chrome",
+    "complete": true,
+    "ref_count": 127,
+    "snapshot_id": "s2tgrpnyhb5392",
+    "tree": {
+      "children": [
+        {
+          "available_actions": [
+            "SetFocus"
+          ],
+          "children": [
+            {
+              "available_actions": [
+                "RightClick",
+                "SetFocus"
+              ],
+              "children": [
+                {
+                  "available_actions": [
+                    "SetFocus"
+                  ],
+                  "children": [
+                    {
+                      "available_actions": [
+                        "SetFocus"
+                      ],
+                      "children": [
+                        {
+                          "available_actions": [
+                            "SetFocus"
+                          ],
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "available_actions": [
+                                    "Click",
+                                    "RightClick",
+                                    "SetFocus"
+                                  ],
+                                  "description": "Back",
+                                  "name": "Back",
+                                  "native_id": {
+                                    "kind": "ax_dom_identifier",
+                                    "value": "view_1001"
+                                  },
+                                  "ref_id": "@s2tgrpnyhb5392:e1",
+                                  "role": "button"
+                                },
+                                {
+                                  "available_actions": [
+                                    "Click",
+                                    "RightClick",
+                                    "SetFocus"
+                                  ],
+                                  "description": "Forward",
+                                  "name": "Forward",
+                                  "native_id": {
+                                    "kind": "ax_dom_identifier",
+                                    "value": "view_1002"
+                                  },
+                                  "ref_id": "@s2tgrpnyhb5392:e2",
+                                  "role": "button",
+                                  "states": [
+                                    "disabled"
+                                  ]
+                                },
+                                {
+                                  "available_actions": [
+                                    "Click",
+                                    "RightClick",
+                                    "SetFocus"
+                                  ],
+                                  "description": "Reload",
+                                  "name": "Reload",
+                                  "native_id": {
+                                    "kind": "ax_dom_identifier",
+                                    "value": "view_1003"
+                                  },
+                                  "ref_id": "@s2tgrpnyhb5392:e3",
+                                  "role": "button"
+                                },
+                                {
+                                  "available_actions": [
+                                    "Click",
+                                    "RightClick",
+                                    "SetFocus"
+                                  ],
+                                  "description": "Home",
+                                  "name": "Home",
+                                  "native_id": {
+                                    "kind": "ax_dom_identifier",
+                                    "value": "view_1004"
+                                  },
+                                  "ref_id": "@s2tgrpnyhb5392:e4",
+                                  "role": "button"
+                                },
+                                {
+                                  "available_actions": [
+                                    "Click",
+                                    "RightClick",
+                                    "SetFocus"
+                                  ],
+                                  "description": "Open tab in split view",
+                                  "name": "Open tab in split view",
+                                  "ref_id": "@s2tgrpnyhb5392:e5",
+                                  "role": "button"
+                                },
+                                {
+                                  "available_actions": [
+                                    "RightClick",
+                                    "SetFocus"
+                                  ],
+                                  "children": [
+                                    {
+                                      "available_actions": [
+                                        "Click",
+                                        "SetValue",
+                                        "Select",
+                                        "SetFocus",
+                                        "TypeText",
+                                        "Expand",
+                                        "Collapse"
+                                      ],
+                                      "description": "View site information",
+                                      "name": "View site information",
+                                      "native_id": {
+                                        "kind": "ax_dom_identifier",
+                                        "value": "view_1011"
+                                      },
+                                      "ref_id": "@s2tgrpnyhb5392:e6",
+                                      "role": "combobox"
+                                    },
+                                    {
+                                      "available_actions": [
+                                        "Click",
+                                        "RightClick",
+                                        "SetValue",
+                                        "SetFocus",
+                                        "TypeText"
+                                      ],
+                                      "description": "Address and search bar",
+                                      "name": "Address and search bar",
+                                      "native_id": {
+                                        "kind": "ax_dom_identifier",
+                                        "value": "view_1012"
+                                      },
+                                      "ref_id": "@s2tgrpnyhb5392:e7",
+                                      "role": "textfield",
+                                      "value": "voice.google.com/u/0/messages?itemId=draft"
+                                    },
+                                    {
+                                      "available_actions": [
+                                        "SetFocus"
+                                      ],
+                                      "children": [
+                                        {
+                                          "available_actions": [
+                                            "Click",
+                                            "SetFocus"
+                                          ],
+                                          "description": "Install Google Voice",
+                                          "name": "Install Google Voice",
+                                          "ref_id": "@s2tgrpnyhb5392:e8",
+                                          "role": "button"
+                                        },
+                                        {
+                                          "available_actions": [
+                                            "Click",
+                                            "SetFocus"
+                                          ],
+                                          "description": "Bookmark this tab",
+                                          "name": "Bookmark this tab",
+                                          "ref_id": "@s2tgrpnyhb5392:e9",
+                                          "role": "button"
+                                        }
+                                      ],
+                                      "role": "group"
+                                    }
+                                  ],
+                                  "role": "group"
+                                },
+                                {
+                                  "available_actions": [
+                                    "SetFocus"
+                                  ],
+                                  "children": [
+                                    {
+                                      "available_actions": [
+                                        "Click",
+                                        "SetValue",
+                                        "Select",
+                                        "SetFocus",
+                                        "TypeText",
+                                        "Expand",
+                                        "Collapse"
+                                      ],
+                                      "description": "INSSIST | Instagram Assistant",
+                                      "name": "INSSIST | Instagram Assistant",
+                                      "native_id": {
+                                        "kind": "ax_dom_identifier",
+                                        "value": "view_1009"
+                                      },
+                                      "ref_id": "@s2tgrpnyhb5392:e10",
+                                      "role": "combobox"
+                                    },
+                                    {
+                                      "available_actions": [
+                                        "Click",
+                                        "SetValue",
+                                        "Select",
+                                        "SetFocus",
+                                        "TypeText",
+                                        "Expand",
+                                        "Collapse"
+                                      ],
+                                      "description": "ReelSorter \u2014 Sort & Download Instagram Reels\nWants access to this site",
+                                      "name": "ReelSorter \u2014 Sort & Download Instagram Reels\nWants access to this site",
+                                      "native_id": {
+                                        "kind": "ax_dom_identifier",
+                                        "value": "view_1009"
+                                      },
+                                      "ref_id": "@s2tgrpnyhb5392:e11",
+                                      "role": "combobox"
+                                    },
+                                    {
+                                      "available_actions": [
+                                        "Click",
+                                        "SetValue",
+                                        "Select",
+                                        "SetFocus",
+                                        "TypeText",
+                                        "Expand",
+                                        "Collapse"
+                                      ],
+                                      "description": "Bulk URL Opener\nWants access to this site",
+                                      "name": "Bulk URL Opener\nWants access to this site",
+                                      "native_id": {
+                                        "kind": "ax_dom_identifier",
+                                        "value": "view_1009"
+                                      },
+                                      "ref_id": "@s2tgrpnyhb5392:e12",
+                                      "role": "combobox"
+                                    },
+                                    {
+                                      "available_actions": [
+                                        "Click",
+                                        "SetValue",
+                                        "Select",
+                                        "SetFocus",
+                                        "TypeText",
+                                        "Expand",
+                                        "Collapse"
+                                      ],
+                                      "description": "Open Claude\nHas access to this site",
+                                      "name": "Open Claude\nHas access to this site",
+                                      "native_id": {
+                                        "kind": "ax_dom_identifier",
+                                        "value": "view_1009"
+                                      },
+                                      "ref_id": "@s2tgrpnyhb5392:e13",
+                                      "role": "combobox"
+                                    },
+                                    {
+                                      "available_actions": [
+                                        "Click",
+                                        "SetValue",
+                                        "Select",
+                                        "SetFocus",
+                                        "TypeText",
+                                        "Expand",
+                                        "Collapse"
+                                      ],
+                                      "description": "1Password\nHas access to this site",
+                                      "name": "1Password\nHas access to this site",
+                                      "native_id": {
+                                        "kind": "ax_dom_identifier",
+                                        "value": "view_1009"
+                                      },
+                                      "ref_id": "@s2tgrpnyhb5392:e14",
+                                      "role": "combobox"
+                                    },
+                                    {
+                                      "available_actions": [
+                                        "Click",
+                                        "SetValue",
+                                        "Select",
+                                        "SetFocus",
+                                        "TypeText",
+                                        "Expand",
+                                        "Collapse"
+                                      ],
+                                      "description": "Use the new ChatGPT side chat feature. Open the ChatGPT extension to continue.\nHas access to this site",
+                                      "name": "Use the new ChatGPT side chat feature. Open the ChatGPT extension to continue.\nHas access to this site",
+                                      "native_id": {
+                                        "kind": "ax_dom_identifier",
+                                        "value": "view_1009"
+                                      },
+                                      "ref_id": "@s2tgrpnyhb5392:e15",
+                                      "role": "combobox"
+                                    },
+                                    {
+                                      "available_actions": [
+                                        "Click",
+                                        "SetValue",
+                                        "Select",
+                                        "SetFocus",
+                                        "TypeText",
+                                        "Expand",
+                                        "Collapse"
+                                      ],
+                                      "description": "Extensions",
+                                      "name": "Extensions",
+                                      "native_id": {
+                                        "kind": "ax_dom_identifier",
+                                        "value": "view_1006"
+                                      },
+                                      "ref_id": "@s2tgrpnyhb5392:e16",
+                                      "role": "combobox"
+                                    }
+                                  ],
+                                  "role": "group"
+                                },
+                                {
+                                  "available_actions": [
+                                    "SetFocus"
+                                  ],
+                                  "role": "group"
+                                },
+                                {
+                                  "available_actions": [
+                                    "SetFocus"
+                                  ],
+                                  "children": [
+                                    {
+                                      "available_actions": [
+                                        "Click",
+                                        "Toggle",
+                                        "RightClick",
+                                        "SetValue",
+                                        "SetFocus"
+                                      ],
+                                      "description": "Google Password Manager - pinned",
+                                      "name": "Google Password Manager - pinned",
+                                      "ref_id": "@s2tgrpnyhb5392:e17",
+                                      "role": "checkbox",
+                                      "value": "0"
+                                    },
+                                    {
+                                      "available_actions": [
+                                        "Click",
+                                        "Toggle",
+                                        "RightClick",
+                                        "SetValue",
+                                        "SetFocus"
+                                      ],
+                                      "description": "Send to your device - pinned",
+                                      "name": "Send to your device - pinned",
+                                      "ref_id": "@s2tgrpnyhb5392:e18",
+                                      "role": "checkbox"
+                                    },
+                                    {
+                                      "available_actions": [
+                                        "Click",
+                                        "Toggle",
+                                        "RightClick",
+                                        "SetValue",
+                                        "SetFocus"
+                                      ],
+                                      "description": "Downloads - pinned",
+                                      "name": "Downloads - pinned",
+                                      "ref_id": "@s2tgrpnyhb5392:e19",
+                                      "role": "checkbox",
+                                      "value": "0"
+                                    },
+                                    {
+                                      "available_actions": [
+                                        "SetFocus"
+                                      ],
+                                      "role": "group"
+                                    }
+                                  ],
+                                  "role": "group"
+                                },
+                                {
+                                  "available_actions": [
+                                    "Click",
+                                    "RightClick",
+                                    "SetFocus"
+                                  ],
+                                  "description": "Example. Google membership",
+                                  "name": "Example. Google membership",
+                                  "native_id": {
+                                    "kind": "ax_dom_identifier",
+                                    "value": "view_1018"
+                                  },
+                                  "ref_id": "@s2tgrpnyhb5392:e20",
+                                  "role": "button"
+                                },
+                                {
+                                  "available_actions": [
+                                    "Click",
+                                    "SetValue",
+                                    "Select",
+                                    "SetFocus",
+                                    "TypeText",
+                                    "Expand",
+                                    "Collapse"
+                                  ],
+                                  "description": "Chrome",
+                                  "name": "Chrome",
+                                  "native_id": {
+                                    "kind": "ax_dom_identifier",
+                                    "value": "view_1007"
+                                  },
+                                  "ref_id": "@s2tgrpnyhb5392:e21",
+                                  "role": "combobox"
+                                }
+                              ],
+                              "native_id": {
+                                "kind": "ax_dom_identifier",
+                                "value": "view_1000"
+                              },
+                              "role": "toolbar"
+                            }
+                          ],
+                          "role": "group"
+                        },
+                        {
+                          "available_actions": [
+                            "SetFocus"
+                          ],
+                          "children": [
+                            {
+                              "available_actions": [
+                                "SetFocus"
+                              ],
+                              "children": [
+                                {
+                                  "available_actions": [
+                                    "SetFocus"
+                                  ],
+                                  "role": "group"
+                                },
+                                {
+                                  "available_actions": [
+                                    "SetFocus"
+                                  ],
+                                  "children": [
+                                    {
+                                      "available_actions": [
+                                        "RightClick",
+                                        "ScrollTo",
+                                        "SetFocus"
+                                      ],
+                                      "children": [
+                                        {
+                                          "available_actions": [
+                                            "Click",
+                                            "RightClick",
+                                            "ScrollTo"
+                                          ],
+                                          "children": [
+                                            {
+                                              "available_actions": [
+                                                "RightClick",
+                                                "ScrollTo"
+                                              ],
+                                              "children": [
+                                                {
+                                                  "available_actions": [
+                                                    "RightClick",
+                                                    "ScrollTo"
+                                                  ],
+                                                  "children": [
+                                                    {
+                                                      "available_actions": [
+                                                        "RightClick",
+                                                        "ScrollTo"
+                                                      ],
+                                                      "role": "group"
+                                                    },
+                                                    {
+                                                      "available_actions": [
+                                                        "RightClick",
+                                                        "ScrollTo"
+                                                      ],
+                                                      "children": [
+                                                        {
+                                                          "available_actions": [
+                                                            "Click",
+                                                            "RightClick",
+                                                            "ScrollTo",
+                                                            "SetFocus"
+                                                          ],
+                                                          "description": "Main menu",
+                                                          "name": "Main menu",
+                                                          "ref_id": "@s2tgrpnyhb5392:e23",
+                                                          "role": "button"
+                                                        },
+                                                        {
+                                                          "available_actions": [
+                                                            "RightClick",
+                                                            "ScrollTo"
+                                                          ],
+                                                          "children": [
+                                                            {
+                                                              "available_actions": [
+                                                                "RightClick",
+                                                                "ScrollTo"
+                                                              ],
+                                                              "children": [
+                                                                {
+                                                                  "available_actions": [
+                                                                    "Click",
+                                                                    "RightClick",
+                                                                    "ScrollTo",
+                                                                    "SetFocus"
+                                                                  ],
+                                                                  "children": [
+                                                                    {
+                                                                      "available_actions": [
+                                                                        "RightClick",
+                                                                        "ScrollTo"
+                                                                      ],
+                                                                      "name": "Voice",
+                                                                      "role": "statictext",
+                                                                      "value": "Voice"
+                                                                    }
+                                                                  ],
+                                                                  "description": "Google Voice",
+                                                                  "name": "Google Voice",
+                                                                  "ref_id": "@s2tgrpnyhb5392:e24",
+                                                                  "role": "link"
+                                                                }
+                                                              ],
+                                                              "role": "group"
+                                                            }
+                                                          ],
+                                                          "role": "group"
+                                                        },
+                                                        {
+                                                          "available_actions": [
+                                                            "RightClick",
+                                                            "ScrollTo"
+                                                          ],
+                                                          "native_id": {
+                                                            "kind": "ax_dom_identifier",
+                                                            "value": "ogb-left-pc-0"
+                                                          },
+                                                          "role": "group"
+                                                        },
+                                                        {
+                                                          "available_actions": [
+                                                            "RightClick",
+                                                            "ScrollTo"
+                                                          ],
+                                                          "native_id": {
+                                                            "kind": "ax_dom_identifier",
+                                                            "value": "ogb-left-pc-1"
+                                                          },
+                                                          "role": "group"
+                                                        },
+                                                        {
+                                                          "available_actions": [
+                                                            "RightClick",
+                                                            "ScrollTo"
+                                                          ],
+                                                          "native_id": {
+                                                            "kind": "ax_dom_identifier",
+                                                            "value": "ogb-left-pc-2"
+                                                          },
+                                                          "role": "group"
+                                                        },
+                                                        {
+                                                          "available_actions": [
+                                                            "RightClick",
+                                                            "ScrollTo"
+                                                          ],
+                                                          "children": [
+                                                            {
+                                                              "available_actions": [
+                                                                "RightClick",
+                                                                "ScrollTo"
+                                                              ],
+                                                              "children": [
+                                                                {
+                                                                  "available_actions": [
+                                                                    "Click",
+                                                                    "ScrollTo",
+                                                                    "SetValue",
+                                                                    "Select",
+                                                                    "SetFocus",
+                                                                    "TypeText",
+                                                                    "Expand",
+                                                                    "Collapse"
+                                                                  ],
+                                                                  "description": "Search",
+                                                                  "name": "Search",
+                                                                  "ref_id": "@s2tgrpnyhb5392:e25",
+                                                                  "role": "combobox"
+                                                                }
+                                                              ],
+                                                              "role": "group"
+                                                            },
+                                                            {
+                                                              "available_actions": [
+                                                                "Click",
+                                                                "RightClick",
+                                                                "ScrollTo",
+                                                                "SetFocus"
+                                                              ],
+                                                              "description": "Search",
+                                                              "name": "Search",
+                                                              "ref_id": "@s2tgrpnyhb5392:e26",
+                                                              "role": "button"
+                                                            }
+                                                          ],
+                                                          "role": "search"
+                                                        },
+                                                        {
+                                                          "available_actions": [
+                                                            "RightClick",
+                                                            "ScrollTo"
+                                                          ],
+                                                          "children": [
+                                                            {
+                                                              "available_actions": [
+                                                                "Click",
+                                                                "RightClick",
+                                                                "ScrollTo",
+                                                                "SetFocus"
+                                                              ],
+                                                              "name": "Call Availability settings Receiving calls",
+                                                              "ref_id": "@s2tgrpnyhb5392:e27",
+                                                              "role": "button"
+                                                            }
+                                                          ],
+                                                          "native_id": {
+                                                            "kind": "ax_dom_identifier",
+                                                            "value": "ogb-right-pc-0"
+                                                          },
+                                                          "role": "group"
+                                                        },
+                                                        {
+                                                          "available_actions": [
+                                                            "RightClick",
+                                                            "ScrollTo"
+                                                          ],
+                                                          "children": [
+                                                            {
+                                                              "available_actions": [
+                                                                "RightClick",
+                                                                "ScrollTo"
+                                                              ],
+                                                              "children": [
+                                                                {
+                                                                  "available_actions": [
+                                                                    "Click",
+                                                                    "RightClick",
+                                                                    "ScrollTo",
+                                                                    "SetFocus"
+                                                                  ],
+                                                                  "description": "Audio settings",
+                                                                  "name": "Audio settings",
+                                                                  "ref_id": "@s2tgrpnyhb5392:e28",
+                                                                  "role": "button"
+                                                                }
+                                                              ],
+                                                              "role": "group"
+                                                            },
+                                                            {
+                                                              "available_actions": [
+                                                                "RightClick",
+                                                                "ScrollTo"
+                                                              ],
+                                                              "children": [
+                                                                {
+                                                                  "available_actions": [
+                                                                    "Click",
+                                                                    "RightClick",
+                                                                    "ScrollTo",
+                                                                    "SetFocus"
+                                                                  ],
+                                                                  "description": "Help",
+                                                                  "name": "Help",
+                                                                  "ref_id": "@s2tgrpnyhb5392:e29",
+                                                                  "role": "button"
+                                                                }
+                                                              ],
+                                                              "role": "group"
+                                                            },
+                                                            {
+                                                              "available_actions": [
+                                                                "RightClick",
+                                                                "ScrollTo"
+                                                              ],
+                                                              "children": [
+                                                                {
+                                                                  "available_actions": [
+                                                                    "Click",
+                                                                    "RightClick",
+                                                                    "ScrollTo",
+                                                                    "SetFocus"
+                                                                  ],
+                                                                  "description": "Settings",
+                                                                  "name": "Settings",
+                                                                  "ref_id": "@s2tgrpnyhb5392:e30",
+                                                                  "role": "button"
+                                                                }
+                                                              ],
+                                                              "role": "group"
+                                                            }
+                                                          ],
+                                                          "native_id": {
+                                                            "kind": "ax_dom_identifier",
+                                                            "value": "ogb-right-pc-1"
+                                                          },
+                                                          "role": "group"
+                                                        },
+                                                        {
+                                                          "available_actions": [
+                                                            "RightClick",
+                                                            "ScrollTo"
+                                                          ],
+                                                          "native_id": {
+                                                            "kind": "ax_dom_identifier",
+                                                            "value": "ogb-right-pc-2"
+                                                          },
+                                                          "role": "group"
+                                                        },
+                                                        {
+                                                          "available_actions": [
+                                                            "RightClick",
+                                                            "ScrollTo"
+                                                          ],
+                                                          "children": [
+                                                            {
+                                                              "available_actions": [
+                                                                "Click",
+                                                                "RightClick",
+                                                                "ScrollTo"
+                                                              ],
+                                                              "children": [
+                                                                {
+                                                                  "available_actions": [
+                                                                    "RightClick",
+                                                                    "ScrollTo"
+                                                                  ],
+                                                                  "children": [
+                                                                    {
+                                                                      "available_actions": [
+                                                                        "Click",
+                                                                        "RightClick",
+                                                                        "ScrollTo",
+                                                                        "SetFocus"
+                                                                      ],
+                                                                      "description": "Google apps",
+                                                                      "name": "Google apps",
+                                                                      "ref_id": "@s2tgrpnyhb5392:e32",
+                                                                      "role": "button"
+                                                                    }
+                                                                  ],
+                                                                  "role": "group"
+                                                                }
+                                                              ],
+                                                              "native_id": {
+                                                                "kind": "ax_dom_identifier",
+                                                                "value": "gbwa"
+                                                              },
+                                                              "ref_id": "@s2tgrpnyhb5392:e31",
+                                                              "role": "group"
+                                                            },
+                                                            {
+                                                              "available_actions": [
+                                                                "RightClick",
+                                                                "ScrollTo"
+                                                              ],
+                                                              "children": [
+                                                                {
+                                                                  "available_actions": [
+                                                                    "RightClick",
+                                                                    "ScrollTo"
+                                                                  ],
+                                                                  "children": [
+                                                                    {
+                                                                      "available_actions": [
+                                                                        "Click",
+                                                                        "RightClick",
+                                                                        "ScrollTo",
+                                                                        "SetFocus"
+                                                                      ],
+                                                                      "description": "Google Account: Example Sender (sender@example.com), Google membership",
+                                                                      "name": "Google Account: Example Sender (sender@example.com), Google membership",
+                                                                      "ref_id": "@s2tgrpnyhb5392:e33",
+                                                                      "role": "button"
+                                                                    }
+                                                                  ],
+                                                                  "role": "group"
+                                                                }
+                                                              ],
+                                                              "role": "group"
+                                                            }
+                                                          ],
+                                                          "role": "group"
+                                                        }
+                                                      ],
+                                                      "role": "group"
+                                                    }
+                                                  ],
+                                                  "native_id": {
+                                                    "kind": "ax_dom_identifier",
+                                                    "value": "gb"
+                                                  },
+                                                  "role": "banner"
+                                                },
+                                                {
+                                                  "available_actions": [
+                                                    "RightClick",
+                                                    "ScrollTo"
+                                                  ],
+                                                  "children": [
+                                                    {
+                                                      "available_actions": [
+                                                        "RightClick",
+                                                        "ScrollTo"
+                                                      ],
+                                                      "role": "group"
+                                                    },
+                                                    {
+                                                      "available_actions": [
+                                                        "RightClick",
+                                                        "ScrollTo"
+                                                      ],
+                                                      "children": [
+                                                        {
+                                                          "available_actions": [
+                                                            "RightClick",
+                                                            "ScrollTo"
+                                                          ],
+                                                          "children": [
+                                                            {
+                                                              "available_actions": [
+                                                                "RightClick",
+                                                                "ScrollTo"
+                                                              ],
+                                                              "children": [
+                                                                {
+                                                                  "available_actions": [
+                                                                    "RightClick",
+                                                                    "ScrollTo"
+                                                                  ],
+                                                                  "children": [
+                                                                    {
+                                                                      "available_actions": [
+                                                                        "RightClick",
+                                                                        "ScrollTo"
+                                                                      ],
+                                                                      "children": [
+                                                                        {
+                                                                          "available_actions": [
+                                                                            "RightClick",
+                                                                            "ScrollTo"
+                                                                          ],
+                                                                          "name": "Try one-click dialing",
+                                                                          "role": "statictext",
+                                                                          "value": "Try one-click dialing"
+                                                                        }
+                                                                      ],
+                                                                      "name": "Try one-click dialing",
+                                                                      "role": "heading",
+                                                                      "value": "2"
+                                                                    },
+                                                                    {
+                                                                      "available_actions": [
+                                                                        "RightClick",
+                                                                        "ScrollTo"
+                                                                      ],
+                                                                      "children": [
+                                                                        {
+                                                                          "available_actions": [
+                                                                            "RightClick",
+                                                                            "ScrollTo"
+                                                                          ],
+                                                                          "name": "Register Google Voice so it can make calls in your browser when you click a phone number link",
+                                                                          "role": "statictext",
+                                                                          "value": "Register Google Voice so it can make calls in your browser when you click a phone number link"
+                                                                        }
+                                                                      ],
+                                                                      "role": "group"
+                                                                    },
+                                                                    {
+                                                                      "available_actions": [
+                                                                        "RightClick",
+                                                                        "ScrollTo"
+                                                                      ],
+                                                                      "children": [
+                                                                        {
+                                                                          "available_actions": [
+                                                                            "Click",
+                                                                            "RightClick",
+                                                                            "ScrollTo",
+                                                                            "SetFocus"
+                                                                          ],
+                                                                          "name": "Register now",
+                                                                          "ref_id": "@s2tgrpnyhb5392:e34",
+                                                                          "role": "button"
+                                                                        },
+                                                                        {
+                                                                          "available_actions": [
+                                                                            "Click",
+                                                                            "RightClick",
+                                                                            "ScrollTo",
+                                                                            "SetFocus"
+                                                                          ],
+                                                                          "description": "Learn more about calling numbers linked in your browser",
+                                                                          "name": "Learn more about calling numbers linked in your browser",
+                                                                          "ref_id": "@s2tgrpnyhb5392:e35",
+                                                                          "role": "button"
+                                                                        }
+                                                                      ],
+                                                                      "role": "group"
+                                                                    },
+                                                                    {
+                                                                      "available_actions": [
+                                                                        "RightClick",
+                                                                        "ScrollTo"
+                                                                      ],
+                                                                      "children": [
+                                                                        {
+                                                                          "available_actions": [
+                                                                            "Click",
+                                                                            "RightClick",
+                                                                            "ScrollTo",
+                                                                            "SetFocus"
+                                                                          ],
+                                                                          "description": "Remind me later about calling linked numbers",
+                                                                          "name": "Remind me later about calling linked numbers",
+                                                                          "ref_id": "@s2tgrpnyhb5392:e36",
+                                                                          "role": "button"
+                                                                        }
+                                                                      ],
+                                                                      "role": "group"
+                                                                    }
+                                                                  ],
+                                                                  "role": "group"
+                                                                },
+                                                                {
+                                                                  "available_actions": [
+                                                                    "RightClick",
+                                                                    "ScrollTo"
+                                                                  ],
+                                                                  "role": "splitter"
+                                                                }
+                                                              ],
+                                                              "native_id": {
+                                                                "kind": "ax_dom_identifier",
+                                                                "value": "gvAppBannerContainer"
+                                                              },
+                                                              "role": "group"
+                                                            },
+                                                            {
+                                                              "available_actions": [
+                                                                "RightClick",
+                                                                "ScrollTo"
+                                                              ],
+                                                              "children": [
+                                                                {
+                                                                  "available_actions": [
+                                                                    "Click",
+                                                                    "Toggle",
+                                                                    "RightClick",
+                                                                    "ScrollTo",
+                                                                    "SetValue",
+                                                                    "SetFocus"
+                                                                  ],
+                                                                  "description": "Calls",
+                                                                  "name": "Calls",
+                                                                  "ref_id": "@s2tgrpnyhb5392:e37",
+                                                                  "role": "radiobutton",
+                                                                  "value": "0"
+                                                                },
+                                                                {
+                                                                  "available_actions": [
+                                                                    "Click",
+                                                                    "Toggle",
+                                                                    "RightClick",
+                                                                    "ScrollTo",
+                                                                    "SetFocus"
+                                                                  ],
+                                                                  "description": "Messages",
+                                                                  "name": "Messages",
+                                                                  "ref_id": "@s2tgrpnyhb5392:e38",
+                                                                  "role": "radiobutton",
+                                                                  "states": [
+                                                                    "checked",
+                                                                    "selected"
+                                                                  ],
+                                                                  "value": "1"
+                                                                },
+                                                                {
+                                                                  "available_actions": [
+                                                                    "Click",
+                                                                    "Toggle",
+                                                                    "RightClick",
+                                                                    "ScrollTo",
+                                                                    "SetValue",
+                                                                    "SetFocus"
+                                                                  ],
+                                                                  "description": "Voicemail: 5 unread",
+                                                                  "name": "Voicemail: 5 unread",
+                                                                  "ref_id": "@s2tgrpnyhb5392:e39",
+                                                                  "role": "radiobutton",
+                                                                  "value": "0"
+                                                                },
+                                                                {
+                                                                  "available_actions": [
+                                                                    "Click",
+                                                                    "Toggle",
+                                                                    "RightClick",
+                                                                    "ScrollTo",
+                                                                    "SetValue",
+                                                                    "SetFocus"
+                                                                  ],
+                                                                  "description": "Archive",
+                                                                  "name": "Archive",
+                                                                  "ref_id": "@s2tgrpnyhb5392:e40",
+                                                                  "role": "radiobutton",
+                                                                  "value": "0"
+                                                                },
+                                                                {
+                                                                  "available_actions": [
+                                                                    "Click",
+                                                                    "Toggle",
+                                                                    "RightClick",
+                                                                    "ScrollTo",
+                                                                    "SetValue",
+                                                                    "SetFocus"
+                                                                  ],
+                                                                  "description": "Spam",
+                                                                  "name": "Spam",
+                                                                  "ref_id": "@s2tgrpnyhb5392:e41",
+                                                                  "role": "radiobutton",
+                                                                  "value": "0"
+                                                                }
+                                                              ],
+                                                              "role": "tablist"
+                                                            },
+                                                            {
+                                                              "available_actions": [
+                                                                "RightClick",
+                                                                "ScrollTo"
+                                                              ],
+                                                              "children": [
+                                                                {
+                                                                  "available_actions": [
+                                                                    "RightClick",
+                                                                    "ScrollTo"
+                                                                  ],
+                                                                  "children": [
+                                                                    {
+                                                                      "available_actions": [
+                                                                        "Click",
+                                                                        "RightClick",
+                                                                        "ScrollTo",
+                                                                        "SetFocus"
+                                                                      ],
+                                                                      "description": "Send new message",
+                                                                      "name": "Send new message",
+                                                                      "ref_id": "@s2tgrpnyhb5392:e42",
+                                                                      "role": "button"
+                                                                    },
+                                                                    {
+                                                                      "available_actions": [
+                                                                        "RightClick",
+                                                                        "ScrollTo"
+                                                                      ],
+                                                                      "role": "splitter"
+                                                                    },
+                                                                    {
+                                                                      "available_actions": [
+                                                                        "RightClick",
+                                                                        "ScrollTo",
+                                                                        "SetFocus"
+                                                                      ],
+                                                                      "children": [
+                                                                        {
+                                                                          "available_actions": [
+                                                                            "RightClick",
+                                                                            "ScrollTo"
+                                                                          ],
+                                                                          "children": [
+                                                                            {
+                                                                              "available_actions": [
+                                                                                "RightClick",
+                                                                                "ScrollTo"
+                                                                              ],
+                                                                              "children": [
+                                                                                {
+                                                                                  "available_actions": [
+                                                                                    "RightClick",
+                                                                                    "ScrollTo"
+                                                                                  ],
+                                                                                  "name": "Latest messages",
+                                                                                  "role": "statictext",
+                                                                                  "value": "Latest messages"
+                                                                                }
+                                                                              ],
+                                                                              "name": "Latest messages",
+                                                                              "native_id": {
+                                                                                "kind": "ax_dom_identifier",
+                                                                                "value": "thread-list-heading"
+                                                                              },
+                                                                              "role": "heading",
+                                                                              "value": "3"
+                                                                            },
+                                                                            {
+                                                                              "available_actions": [
+                                                                                "RightClick",
+                                                                                "ScrollTo",
+                                                                                "SetFocus"
+                                                                              ],
+                                                                              "children": [
+                                                                                {
+                                                                                  "available_actions": [
+                                                                                    "RightClick",
+                                                                                    "ScrollTo"
+                                                                                  ],
+                                                                                  "children": [
+                                                                                    {
+                                                                                      "available_actions": [
+                                                                                        "RightClick",
+                                                                                        "ScrollTo",
+                                                                                        "Select"
+                                                                                      ],
+                                                                                      "children": [
+                                                                                        {
+                                                                                          "available_actions": [
+                                                                                            "RightClick",
+                                                                                            "ScrollTo"
+                                                                                          ],
+                                                                                          "children": [
+                                                                                            {
+                                                                                              "available_actions": [
+                                                                                                "Click",
+                                                                                                "Toggle",
+                                                                                                "RightClick",
+                                                                                                "ScrollTo",
+                                                                                                "SetFocus"
+                                                                                              ],
+                                                                                              "children": [
+                                                                                                {
+                                                                                                  "available_actions": [
+                                                                                                    "RightClick",
+                                                                                                    "ScrollTo"
+                                                                                                  ],
+                                                                                                  "children": [
+                                                                                                    {
+                                                                                                      "available_actions": [
+                                                                                                        "Click",
+                                                                                                        "RightClick",
+                                                                                                        "ScrollTo",
+                                                                                                        "SetFocus"
+                                                                                                      ],
+                                                                                                      "ref_id": "@s2tgrpnyhb5392:e71",
+                                                                                                      "role": "group"
+                                                                                                    },
+                                                                                                    {
+                                                                                                      "available_actions": [
+                                                                                                        "RightClick",
+                                                                                                        "ScrollTo"
+                                                                                                      ],
+                                                                                                      "role": "group"
+                                                                                                    }
+                                                                                                  ],
+                                                                                                  "role": "group"
+                                                                                                },
+                                                                                                {
+                                                                                                  "available_actions": [
+                                                                                                    "RightClick",
+                                                                                                    "ScrollTo"
+                                                                                                  ],
+                                                                                                  "name": "2 0 2 5 5 5 0 1 8 6",
+                                                                                                  "role": "statictext",
+                                                                                                  "value": "2 0 2 5 5 5 0 1 8 6"
+                                                                                                },
+                                                                                                {
+                                                                                                  "available_actions": [
+                                                                                                    "RightClick",
+                                                                                                    "ScrollTo"
+                                                                                                  ],
+                                                                                                  "children": [
+                                                                                                    {
+                                                                                                      "available_actions": [
+                                                                                                        "RightClick",
+                                                                                                        "ScrollTo"
+                                                                                                      ],
+                                                                                                      "name": ".",
+                                                                                                      "role": "statictext",
+                                                                                                      "value": "."
+                                                                                                    }
+                                                                                                  ],
+                                                                                                  "role": "group"
+                                                                                                },
+                                                                                                {
+                                                                                                  "available_actions": [
+                                                                                                    "RightClick",
+                                                                                                    "ScrollTo"
+                                                                                                  ],
+                                                                                                  "children": [
+                                                                                                    {
+                                                                                                      "available_actions": [
+                                                                                                        "RightClick",
+                                                                                                        "ScrollTo"
+                                                                                                      ],
+                                                                                                      "name": "You: Test",
+                                                                                                      "role": "statictext",
+                                                                                                      "value": "You: Test"
+                                                                                                    }
+                                                                                                  ],
+                                                                                                  "description": "You: Test",
+                                                                                                  "name": "You: Test",
+                                                                                                  "role": "group"
+                                                                                                },
+                                                                                                {
+                                                                                                  "available_actions": [
+                                                                                                    "RightClick",
+                                                                                                    "ScrollTo"
+                                                                                                  ],
+                                                                                                  "children": [
+                                                                                                    {
+                                                                                                      "available_actions": [
+                                                                                                        "RightClick",
+                                                                                                        "ScrollTo"
+                                                                                                      ],
+                                                                                                      "name": ".",
+                                                                                                      "role": "statictext",
+                                                                                                      "value": "."
+                                                                                                    }
+                                                                                                  ],
+                                                                                                  "role": "group"
+                                                                                                },
+                                                                                                {
+                                                                                                  "available_actions": [
+                                                                                                    "RightClick",
+                                                                                                    "ScrollTo"
+                                                                                                  ],
+                                                                                                  "children": [
+                                                                                                    {
+                                                                                                      "available_actions": [
+                                                                                                        "RightClick",
+                                                                                                        "ScrollTo"
+                                                                                                      ],
+                                                                                                      "name": "Friday, May 15 2026, 3:26 AM",
+                                                                                                      "role": "statictext",
+                                                                                                      "value": "Friday, May 15 2026, 3:26 AM"
+                                                                                                    }
+                                                                                                  ],
+                                                                                                  "role": "group"
+                                                                                                },
+                                                                                                {
+                                                                                                  "available_actions": [
+                                                                                                    "RightClick",
+                                                                                                    "ScrollTo"
+                                                                                                  ],
+                                                                                                  "children": [
+                                                                                                    {
+                                                                                                      "available_actions": [
+                                                                                                        "RightClick",
+                                                                                                        "ScrollTo"
+                                                                                                      ],
+                                                                                                      "name": ".",
+                                                                                                      "role": "statictext",
+                                                                                                      "value": "."
+                                                                                                    }
+                                                                                                  ],
+                                                                                                  "role": "group"
+                                                                                                }
+                                                                                              ],
+                                                                                              "name": "2 0 2 5 5 5 0 1 8 6 . You: Test . Friday, May 15 2026, 3:26 AM .",
+                                                                                              "ref_id": "@s2tgrpnyhb5392:e70",
+                                                                                              "role": "checkbox",
+                                                                                              "value": "0"
+                                                                                            }
+                                                                                          ],
+                                                                                          "role": "group"
+                                                                                        }
+                                                                                      ],
+                                                                                      "name": "Latest messages",
+                                                                                      "ref_id": "@s2tgrpnyhb5392:e43",
+                                                                                      "role": "list"
+                                                                                    }
+                                                                                  ],
+                                                                                  "role": "group"
+                                                                                }
+                                                                              ],
+                                                                              "role": "group"
+                                                                            }
+                                                                          ],
+                                                                          "name": "Latest messages",
+                                                                          "role": "group"
+                                                                        }
+                                                                      ],
+                                                                      "role": "group"
+                                                                    }
+                                                                  ],
+                                                                  "role": "group"
+                                                                },
+                                                                {
+                                                                  "available_actions": [
+                                                                    "RightClick",
+                                                                    "ScrollTo",
+                                                                    "SetFocus"
+                                                                  ],
+                                                                  "children": [
+                                                                    {
+                                                                      "available_actions": [
+                                                                        "RightClick",
+                                                                        "ScrollTo"
+                                                                      ],
+                                                                      "children": [
+                                                                        {
+                                                                          "available_actions": [
+                                                                            "RightClick",
+                                                                            "ScrollTo"
+                                                                          ],
+                                                                          "children": [
+                                                                            {
+                                                                              "available_actions": [
+                                                                                "RightClick",
+                                                                                "ScrollTo"
+                                                                              ],
+                                                                              "children": [
+                                                                                {
+                                                                                  "available_actions": [
+                                                                                    "RightClick",
+                                                                                    "ScrollTo"
+                                                                                  ],
+                                                                                  "children": [
+                                                                                    {
+                                                                                      "available_actions": [
+                                                                                        "RightClick",
+                                                                                        "ScrollTo",
+                                                                                        "SetFocus"
+                                                                                      ],
+                                                                                      "children": [
+                                                                                        {
+                                                                                          "available_actions": [
+                                                                                            "RightClick",
+                                                                                            "ScrollTo"
+                                                                                          ],
+                                                                                          "name": "1 recipient added.",
+                                                                                          "role": "statictext",
+                                                                                          "value": "1 recipient added."
+                                                                                        }
+                                                                                      ],
+                                                                                      "role": "group"
+                                                                                    },
+                                                                                    {
+                                                                                      "available_actions": [
+                                                                                        "RightClick",
+                                                                                        "ScrollTo"
+                                                                                      ],
+                                                                                      "children": [
+                                                                                        {
+                                                                                          "available_actions": [
+                                                                                            "RightClick",
+                                                                                            "ScrollTo"
+                                                                                          ],
+                                                                                          "name": "To",
+                                                                                          "role": "statictext",
+                                                                                          "value": "To"
+                                                                                        }
+                                                                                      ],
+                                                                                      "description": "Select recipients to send a message to",
+                                                                                      "name": "Select recipients to send a message to",
+                                                                                      "role": "group"
+                                                                                    },
+                                                                                    {
+                                                                                      "available_actions": [
+                                                                                        "RightClick",
+                                                                                        "ScrollTo",
+                                                                                        "Select",
+                                                                                        "SetFocus"
+                                                                                      ],
+                                                                                      "children": [
+                                                                                        {
+                                                                                          "available_actions": [
+                                                                                            "Click",
+                                                                                            "RightClick",
+                                                                                            "ScrollTo",
+                                                                                            "SetFocus"
+                                                                                          ],
+                                                                                          "children": [
+                                                                                            {
+                                                                                              "available_actions": [
+                                                                                                "Click",
+                                                                                                "RightClick",
+                                                                                                "ScrollTo",
+                                                                                                "SetFocus"
+                                                                                              ],
+                                                                                              "children": [
+                                                                                                {
+                                                                                                  "available_actions": [
+                                                                                                    "RightClick",
+                                                                                                    "ScrollTo"
+                                                                                                  ],
+                                                                                                  "children": [
+                                                                                                    {
+                                                                                                      "available_actions": [
+                                                                                                        "RightClick",
+                                                                                                        "ScrollTo"
+                                                                                                      ],
+                                                                                                      "name": "2 0 2 5 5 5 0 1 8 6",
+                                                                                                      "role": "statictext",
+                                                                                                      "value": "2 0 2 5 5 5 0 1 8 6"
+                                                                                                    }
+                                                                                                  ],
+                                                                                                  "role": "group"
+                                                                                                }
+                                                                                              ],
+                                                                                              "name": "2 0 2 5 5 5 0 1 8 6",
+                                                                                              "ref_id": "@s2tgrpnyhb5392:e84",
+                                                                                              "role": "cell"
+                                                                                            },
+                                                                                            {
+                                                                                              "available_actions": [
+                                                                                                "RightClick",
+                                                                                                "ScrollTo"
+                                                                                              ],
+                                                                                              "children": [
+                                                                                                {
+                                                                                                  "available_actions": [
+                                                                                                    "Click",
+                                                                                                    "RightClick",
+                                                                                                    "ScrollTo",
+                                                                                                    "SetFocus"
+                                                                                                  ],
+                                                                                                  "description": "Remove 2 0 2 5 5 5 0 1 8 6?",
+                                                                                                  "name": "Remove 2 0 2 5 5 5 0 1 8 6?",
+                                                                                                  "ref_id": "@s2tgrpnyhb5392:e86",
+                                                                                                  "role": "button"
+                                                                                                }
+                                                                                              ],
+                                                                                              "ref_id": "@s2tgrpnyhb5392:e85",
+                                                                                              "role": "cell"
+                                                                                            }
+                                                                                          ],
+                                                                                          "name": "2 0 2 5 5 5 0 1 8 6 Remove 2 0 2 5 5 5 0 1 8 6?",
+                                                                                          "native_id": {
+                                                                                            "kind": "ax_dom_identifier",
+                                                                                            "value": "mat-mdc-chip-0"
+                                                                                          },
+                                                                                          "ref_id": "@s2tgrpnyhb5392:e83",
+                                                                                          "role": "row"
+                                                                                        },
+                                                                                        {
+                                                                                          "available_actions": [
+                                                                                            "RightClick",
+                                                                                            "ScrollTo"
+                                                                                          ],
+                                                                                          "children": [
+                                                                                            {
+                                                                                              "available_actions": [
+                                                                                                "Click",
+                                                                                                "RightClick",
+                                                                                                "ScrollTo",
+                                                                                                "SetFocus"
+                                                                                              ],
+                                                                                              "children": [
+                                                                                                {
+                                                                                                  "available_actions": [
+                                                                                                    "RightClick",
+                                                                                                    "ScrollTo"
+                                                                                                  ],
+                                                                                                  "children": [
+                                                                                                    {
+                                                                                                      "available_actions": [
+                                                                                                        "RightClick",
+                                                                                                        "ScrollTo"
+                                                                                                      ],
+                                                                                                      "name": "2 0 2 5 5 5 0 1 8 6",
+                                                                                                      "role": "statictext",
+                                                                                                      "value": "2 0 2 5 5 5 0 1 8 6"
+                                                                                                    }
+                                                                                                  ],
+                                                                                                  "role": "group"
+                                                                                                }
+                                                                                              ],
+                                                                                              "name": "2 0 2 5 5 5 0 1 8 6",
+                                                                                              "ref_id": "@s2tgrpnyhb5392:e87",
+                                                                                              "role": "cell"
+                                                                                            }
+                                                                                          ],
+                                                                                          "role": "column"
+                                                                                        },
+                                                                                        {
+                                                                                          "available_actions": [
+                                                                                            "RightClick",
+                                                                                            "ScrollTo"
+                                                                                          ],
+                                                                                          "children": [
+                                                                                            {
+                                                                                              "available_actions": [
+                                                                                                "RightClick",
+                                                                                                "ScrollTo"
+                                                                                              ],
+                                                                                              "children": [
+                                                                                                {
+                                                                                                  "available_actions": [
+                                                                                                    "Click",
+                                                                                                    "RightClick",
+                                                                                                    "ScrollTo",
+                                                                                                    "SetFocus"
+                                                                                                  ],
+                                                                                                  "description": "Remove 2 0 2 5 5 5 0 1 8 6?",
+                                                                                                  "name": "Remove 2 0 2 5 5 5 0 1 8 6?",
+                                                                                                  "ref_id": "@s2tgrpnyhb5392:e89",
+                                                                                                  "role": "button"
+                                                                                                }
+                                                                                              ],
+                                                                                              "ref_id": "@s2tgrpnyhb5392:e88",
+                                                                                              "role": "cell"
+                                                                                            }
+                                                                                          ],
+                                                                                          "role": "column"
+                                                                                        },
+                                                                                        {
+                                                                                          "available_actions": [
+                                                                                            "RightClick",
+                                                                                            "ScrollTo"
+                                                                                          ],
+                                                                                          "role": "group"
+                                                                                        }
+                                                                                      ],
+                                                                                      "ref_id": "@s2tgrpnyhb5392:e82",
+                                                                                      "role": "table"
+                                                                                    },
+                                                                                    {
+                                                                                      "available_actions": [
+                                                                                        "Click",
+                                                                                        "RightClick",
+                                                                                        "ScrollTo",
+                                                                                        "SetValue",
+                                                                                        "SetFocus",
+                                                                                        "TypeText"
+                                                                                      ],
+                                                                                      "description": "Add recipients",
+                                                                                      "name": "Add recipients",
+                                                                                      "native_id": {
+                                                                                        "kind": "ax_dom_identifier",
+                                                                                        "value": "mat-input-0"
+                                                                                      },
+                                                                                      "ref_id": "@s2tgrpnyhb5392:e90",
+                                                                                      "role": "textfield",
+                                                                                      "states": [
+                                                                                        "focused"
+                                                                                      ]
+                                                                                    }
+                                                                                  ],
+                                                                                  "description": "Select recipients",
+                                                                                  "name": "Select recipients",
+                                                                                  "role": "group"
+                                                                                }
+                                                                              ],
+                                                                              "role": "group"
+                                                                            },
+                                                                            {
+                                                                              "available_actions": [
+                                                                                "RightClick",
+                                                                                "ScrollTo"
+                                                                              ],
+                                                                              "children": [
+                                                                                {
+                                                                                  "available_actions": [
+                                                                                    "RightClick",
+                                                                                    "ScrollTo"
+                                                                                  ],
+                                                                                  "role": "image"
+                                                                                },
+                                                                                {
+                                                                                  "available_actions": [
+                                                                                    "RightClick",
+                                                                                    "ScrollTo",
+                                                                                    "SetFocus"
+                                                                                  ],
+                                                                                  "children": [
+                                                                                    {
+                                                                                      "available_actions": [
+                                                                                        "RightClick",
+                                                                                        "ScrollTo"
+                                                                                      ],
+                                                                                      "children": [
+                                                                                        {
+                                                                                          "available_actions": [
+                                                                                            "RightClick",
+                                                                                            "ScrollTo"
+                                                                                          ],
+                                                                                          "name": "Latest messages",
+                                                                                          "role": "statictext",
+                                                                                          "value": "Latest messages"
+                                                                                        }
+                                                                                      ],
+                                                                                      "name": "Latest messages",
+                                                                                      "native_id": {
+                                                                                        "kind": "ax_dom_identifier",
+                                                                                        "value": "title1"
+                                                                                      },
+                                                                                      "role": "heading",
+                                                                                      "value": "3"
+                                                                                    },
+                                                                                    {
+                                                                                      "available_actions": [
+                                                                                        "RightClick",
+                                                                                        "ScrollTo",
+                                                                                        "Select"
+                                                                                      ],
+                                                                                      "children": [
+                                                                                        {
+                                                                                          "available_actions": [
+                                                                                            "RightClick",
+                                                                                            "ScrollTo"
+                                                                                          ],
+                                                                                          "children": [
+                                                                                            {
+                                                                                              "available_actions": [
+                                                                                                "Click",
+                                                                                                "RightClick",
+                                                                                                "ScrollTo",
+                                                                                                "SetFocus"
+                                                                                              ],
+                                                                                              "children": [
+                                                                                                {
+                                                                                                  "available_actions": [
+                                                                                                    "RightClick",
+                                                                                                    "ScrollTo"
+                                                                                                  ],
+                                                                                                  "children": [
+                                                                                                    {
+                                                                                                      "available_actions": [
+                                                                                                        "RightClick",
+                                                                                                        "ScrollTo"
+                                                                                                      ],
+                                                                                                      "name": "Message from you, test, Tuesday, April 7 2026, 12:11 AM.",
+                                                                                                      "role": "statictext",
+                                                                                                      "value": "Message from you, test, Tuesday, April 7 2026, 12:11 AM."
+                                                                                                    }
+                                                                                                  ],
+                                                                                                  "role": "group"
+                                                                                                },
+                                                                                                {
+                                                                                                  "available_actions": [
+                                                                                                    "RightClick",
+                                                                                                    "ScrollTo"
+                                                                                                  ],
+                                                                                                  "children": [
+                                                                                                    {
+                                                                                                      "available_actions": [
+                                                                                                        "RightClick",
+                                                                                                        "ScrollTo"
+                                                                                                      ],
+                                                                                                      "role": "group"
+                                                                                                    }
+                                                                                                  ],
+                                                                                                  "role": "group"
+                                                                                                },
+                                                                                                {
+                                                                                                  "available_actions": [
+                                                                                                    "RightClick",
+                                                                                                    "ScrollTo"
+                                                                                                  ],
+                                                                                                  "children": [
+                                                                                                    {
+                                                                                                      "available_actions": [
+                                                                                                        "Click",
+                                                                                                        "ScrollTo",
+                                                                                                        "SetFocus",
+                                                                                                        "Expand",
+                                                                                                        "Collapse"
+                                                                                                      ],
+                                                                                                      "description": "Options",
+                                                                                                      "name": "Options",
+                                                                                                      "ref_id": "@s2tgrpnyhb5392:e97",
+                                                                                                      "role": "combobox",
+                                                                                                      "states": [
+                                                                                                        "readonly"
+                                                                                                      ]
+                                                                                                    }
+                                                                                                  ],
+                                                                                                  "role": "group"
+                                                                                                }
+                                                                                              ],
+                                                                                              "ref_id": "@s2tgrpnyhb5392:e96",
+                                                                                              "role": "group"
+                                                                                            }
+                                                                                          ],
+                                                                                          "role": "group"
+                                                                                        },
+                                                                                        {
+                                                                                          "available_actions": [
+                                                                                            "RightClick",
+                                                                                            "ScrollTo"
+                                                                                          ],
+                                                                                          "children": [
+                                                                                            {
+                                                                                              "available_actions": [
+                                                                                                "Click",
+                                                                                                "RightClick",
+                                                                                                "ScrollTo",
+                                                                                                "SetFocus"
+                                                                                              ],
+                                                                                              "children": [
+                                                                                                {
+                                                                                                  "available_actions": [
+                                                                                                    "RightClick",
+                                                                                                    "ScrollTo"
+                                                                                                  ],
+                                                                                                  "children": [
+                                                                                                    {
+                                                                                                      "available_actions": [
+                                                                                                        "RightClick",
+                                                                                                        "ScrollTo"
+                                                                                                      ],
+                                                                                                      "name": "Message from 2 0 2 5 5 5 0 1 8 6, testing, Tuesday, April 7 2026, 12:11 AM.",
+                                                                                                      "role": "statictext",
+                                                                                                      "value": "Message from 2 0 2 5 5 5 0 1 8 6, testing, Tuesday, April 7 2026, 12:11 AM."
+                                                                                                    }
+                                                                                                  ],
+                                                                                                  "role": "group"
+                                                                                                },
+                                                                                                {
+                                                                                                  "available_actions": [
+                                                                                                    "RightClick",
+                                                                                                    "ScrollTo"
+                                                                                                  ],
+                                                                                                  "children": [
+                                                                                                    {
+                                                                                                      "available_actions": [
+                                                                                                        "RightClick",
+                                                                                                        "ScrollTo"
+                                                                                                      ],
+                                                                                                      "role": "group"
+                                                                                                    }
+                                                                                                  ],
+                                                                                                  "role": "group"
+                                                                                                },
+                                                                                                {
+                                                                                                  "available_actions": [
+                                                                                                    "RightClick",
+                                                                                                    "ScrollTo"
+                                                                                                  ],
+                                                                                                  "children": [
+                                                                                                    {
+                                                                                                      "available_actions": [
+                                                                                                        "Click",
+                                                                                                        "ScrollTo",
+                                                                                                        "SetFocus",
+                                                                                                        "Expand",
+                                                                                                        "Collapse"
+                                                                                                      ],
+                                                                                                      "description": "Options",
+                                                                                                      "name": "Options",
+                                                                                                      "ref_id": "@s2tgrpnyhb5392:e99",
+                                                                                                      "role": "combobox",
+                                                                                                      "states": [
+                                                                                                        "readonly"
+                                                                                                      ]
+                                                                                                    }
+                                                                                                  ],
+                                                                                                  "role": "group"
+                                                                                                }
+                                                                                              ],
+                                                                                              "ref_id": "@s2tgrpnyhb5392:e98",
+                                                                                              "role": "group"
+                                                                                            }
+                                                                                          ],
+                                                                                          "role": "group"
+                                                                                        },
+                                                                                        {
+                                                                                          "available_actions": [
+                                                                                            "RightClick",
+                                                                                            "ScrollTo"
+                                                                                          ],
+                                                                                          "children": [
+                                                                                            {
+                                                                                              "available_actions": [
+                                                                                                "Click",
+                                                                                                "RightClick",
+                                                                                                "ScrollTo",
+                                                                                                "SetFocus"
+                                                                                              ],
+                                                                                              "children": [
+                                                                                                {
+                                                                                                  "available_actions": [
+                                                                                                    "RightClick",
+                                                                                                    "ScrollTo"
+                                                                                                  ],
+                                                                                                  "children": [
+                                                                                                    {
+                                                                                                      "available_actions": [
+                                                                                                        "RightClick",
+                                                                                                        "ScrollTo"
+                                                                                                      ],
+                                                                                                      "name": "Message from you, Test, Friday, May 15 2026, 3:26 AM.",
+                                                                                                      "role": "statictext",
+                                                                                                      "value": "Message from you, Test, Friday, May 15 2026, 3:26 AM."
+                                                                                                    }
+                                                                                                  ],
+                                                                                                  "role": "group"
+                                                                                                },
+                                                                                                {
+                                                                                                  "available_actions": [
+                                                                                                    "RightClick",
+                                                                                                    "ScrollTo"
+                                                                                                  ],
+                                                                                                  "children": [
+                                                                                                    {
+                                                                                                      "available_actions": [
+                                                                                                        "RightClick",
+                                                                                                        "ScrollTo"
+                                                                                                      ],
+                                                                                                      "role": "group"
+                                                                                                    }
+                                                                                                  ],
+                                                                                                  "role": "group"
+                                                                                                },
+                                                                                                {
+                                                                                                  "available_actions": [
+                                                                                                    "RightClick",
+                                                                                                    "ScrollTo"
+                                                                                                  ],
+                                                                                                  "children": [
+                                                                                                    {
+                                                                                                      "available_actions": [
+                                                                                                        "Click",
+                                                                                                        "ScrollTo",
+                                                                                                        "SetFocus",
+                                                                                                        "Expand",
+                                                                                                        "Collapse"
+                                                                                                      ],
+                                                                                                      "description": "Options",
+                                                                                                      "name": "Options",
+                                                                                                      "ref_id": "@s2tgrpnyhb5392:e103",
+                                                                                                      "role": "combobox",
+                                                                                                      "states": [
+                                                                                                        "readonly"
+                                                                                                      ]
+                                                                                                    }
+                                                                                                  ],
+                                                                                                  "role": "group"
+                                                                                                }
+                                                                                              ],
+                                                                                              "ref_id": "@s2tgrpnyhb5392:e102",
+                                                                                              "role": "group"
+                                                                                            }
+                                                                                          ],
+                                                                                          "role": "group"
+                                                                                        }
+                                                                                      ],
+                                                                                      "name": "Latest messages",
+                                                                                      "ref_id": "@s2tgrpnyhb5392:e91",
+                                                                                      "role": "list"
+                                                                                    }
+                                                                                  ],
+                                                                                  "name": "Latest messages",
+                                                                                  "role": "group"
+                                                                                }
+                                                                              ],
+                                                                              "role": "group"
+                                                                            },
+                                                                            {
+                                                                              "available_actions": [
+                                                                                "RightClick",
+                                                                                "ScrollTo"
+                                                                              ],
+                                                                              "children": [
+                                                                                {
+                                                                                  "available_actions": [
+                                                                                    "Click",
+                                                                                    "RightClick",
+                                                                                    "ScrollTo"
+                                                                                  ],
+                                                                                  "children": [
+                                                                                    {
+                                                                                      "available_actions": [
+                                                                                        "RightClick",
+                                                                                        "ScrollTo"
+                                                                                      ],
+                                                                                      "children": [
+                                                                                        {
+                                                                                          "available_actions": [
+                                                                                            "Click",
+                                                                                            "ScrollTo",
+                                                                                            "SetFocus",
+                                                                                            "Expand",
+                                                                                            "Collapse"
+                                                                                          ],
+                                                                                          "description": "Add image",
+                                                                                          "name": "Add image",
+                                                                                          "ref_id": "@s2tgrpnyhb5392:e105",
+                                                                                          "role": "combobox",
+                                                                                          "states": [
+                                                                                            "readonly"
+                                                                                          ]
+                                                                                        }
+                                                                                      ],
+                                                                                      "role": "group"
+                                                                                    },
+                                                                                    {
+                                                                                      "available_actions": [
+                                                                                        "Click",
+                                                                                        "RightClick",
+                                                                                        "ScrollTo"
+                                                                                      ],
+                                                                                      "children": [
+                                                                                        {
+                                                                                          "available_actions": [
+                                                                                            "Click",
+                                                                                            "RightClick",
+                                                                                            "ScrollTo",
+                                                                                            "SetValue",
+                                                                                            "SetFocus",
+                                                                                            "TypeText"
+                                                                                          ],
+                                                                                          "name": "Type a message",
+                                                                                          "ref_id": "@s2tgrpnyhb5392:e107",
+                                                                                          "role": "textfield"
+                                                                                        }
+                                                                                      ],
+                                                                                      "ref_id": "@s2tgrpnyhb5392:e106",
+                                                                                      "role": "group"
+                                                                                    },
+                                                                                    {
+                                                                                      "available_actions": [
+                                                                                        "RightClick",
+                                                                                        "ScrollTo",
+                                                                                        "SetFocus"
+                                                                                      ],
+                                                                                      "role": "group"
+                                                                                    },
+                                                                                    {
+                                                                                      "available_actions": [
+                                                                                        "RightClick",
+                                                                                        "ScrollTo"
+                                                                                      ],
+                                                                                      "children": [
+                                                                                        {
+                                                                                          "available_actions": [
+                                                                                            "Click",
+                                                                                            "RightClick",
+                                                                                            "ScrollTo"
+                                                                                          ],
+                                                                                          "description": "Send message",
+                                                                                          "name": "Send message",
+                                                                                          "ref_id": "@s2tgrpnyhb5392:e108",
+                                                                                          "role": "button",
+                                                                                          "states": [
+                                                                                            "disabled"
+                                                                                          ]
+                                                                                        }
+                                                                                      ],
+                                                                                      "role": "group"
+                                                                                    }
+                                                                                  ],
+                                                                                  "ref_id": "@s2tgrpnyhb5392:e104",
+                                                                                  "role": "group"
+                                                                                }
+                                                                              ],
+                                                                              "role": "group"
+                                                                            }
+                                                                          ],
+                                                                          "description": "Details",
+                                                                          "name": "Details",
+                                                                          "role": "group"
+                                                                        }
+                                                                      ],
+                                                                      "role": "group"
+                                                                    }
+                                                                  ],
+                                                                  "role": "group"
+                                                                }
+                                                              ],
+                                                              "role": "main"
+                                                            }
+                                                          ],
+                                                          "role": "group"
+                                                        }
+                                                      ],
+                                                      "role": "group"
+                                                    }
+                                                  ],
+                                                  "role": "group"
+                                                }
+                                              ],
+                                              "native_id": {
+                                                "kind": "ax_dom_identifier",
+                                                "value": "gv-root"
+                                              },
+                                              "role": "group"
+                                            },
+                                            {
+                                              "available_actions": [
+                                                "RightClick",
+                                                "ScrollTo"
+                                              ],
+                                              "native_id": {
+                                                "kind": "ax_dom_identifier",
+                                                "value": "contain-402"
+                                              },
+                                              "role": "group"
+                                            },
+                                            {
+                                              "available_actions": [
+                                                "RightClick",
+                                                "ScrollTo"
+                                              ],
+                                              "children": [
+                                                {
+                                                  "available_actions": [
+                                                    "RightClick",
+                                                    "ScrollTo"
+                                                  ],
+                                                  "children": [
+                                                    {
+                                                      "available_actions": [
+                                                        "RightClick",
+                                                        "ScrollTo"
+                                                      ],
+                                                      "children": [
+                                                        {
+                                                          "available_actions": [
+                                                            "RightClick",
+                                                            "ScrollTo",
+                                                            "SetFocus"
+                                                          ],
+                                                          "children": [
+                                                            {
+                                                              "available_actions": [
+                                                                "RightClick",
+                                                                "ScrollTo"
+                                                              ],
+                                                              "children": [],
+                                                              "name": "SUGGESTIONS",
+                                                              "role": "group"
+                                                            }
+                                                          ],
+                                                          "native_id": {
+                                                            "kind": "ax_dom_identifier",
+                                                            "value": "contact-list"
+                                                          },
+                                                          "role": "group"
+                                                        }
+                                                      ],
+                                                      "native_id": {
+                                                        "kind": "ax_dom_identifier",
+                                                        "value": "cdk-overlay-0"
+                                                      },
+                                                      "role": "group"
+                                                    }
+                                                  ],
+                                                  "role": "group"
+                                                }
+                                              ],
+                                              "role": "group"
+                                            },
+                                            {
+                                              "available_actions": [
+                                                "RightClick",
+                                                "ScrollTo"
+                                              ],
+                                              "children": [
+                                                {
+                                                  "available_actions": [
+                                                    "RightClick",
+                                                    "ScrollTo"
+                                                  ],
+                                                  "name": "10 contacts found",
+                                                  "role": "statictext",
+                                                  "value": "10 contacts found"
+                                                }
+                                              ],
+                                              "native_id": {
+                                                "kind": "ax_dom_identifier",
+                                                "value": "cdk-live-announcer-0"
+                                              },
+                                              "role": "group"
+                                            },
+                                            {
+                                              "available_actions": [
+                                                "RightClick",
+                                                "ScrollTo"
+                                              ],
+                                              "native_id": {
+                                                "kind": "ax_dom_identifier",
+                                                "value": "goog-lr-65"
+                                              },
+                                              "role": "group"
+                                            },
+                                            {
+                                              "available_actions": [
+                                                "RightClick",
+                                                "ScrollTo"
+                                              ],
+                                              "native_id": {
+                                                "kind": "ax_dom_identifier",
+                                                "value": "goog-lr-66"
+                                              },
+                                              "role": "group"
+                                            }
+                                          ],
+                                          "ref_id": "@s2tgrpnyhb5392:e22",
+                                          "role": "group"
+                                        }
+                                      ],
+                                      "name": "Voice - Messages",
+                                      "role": "webarea"
+                                    }
+                                  ],
+                                  "role": "scrollarea"
+                                },
+                                {
+                                  "available_actions": [
+                                    "SetFocus"
+                                  ],
+                                  "role": "group"
+                                }
+                              ],
+                              "role": "group"
+                            },
+                            {
+                              "available_actions": [
+                                "SetFocus"
+                              ],
+                              "role": "group"
+                            }
+                          ],
+                          "role": "group"
+                        },
+                        {
+                          "available_actions": [
+                            "SetFocus"
+                          ],
+                          "children": [
+                            {
+                              "available_actions": [
+                                "SetFocus"
+                              ],
+                              "children": [
+                                {
+                                  "available_actions": [
+                                    "Click",
+                                    "SetValue",
+                                    "Select",
+                                    "SetFocus",
+                                    "TypeText",
+                                    "Expand",
+                                    "Collapse"
+                                  ],
+                                  "description": "Tab search",
+                                  "name": "Tab search",
+                                  "ref_id": "@s2tgrpnyhb5392:e120",
+                                  "role": "combobox"
+                                }
+                              ],
+                              "role": "group"
+                            },
+                            {
+                              "available_actions": [
+                                "SetFocus"
+                              ],
+                              "children": [
+                                {
+                                  "children": [
+                                    {
+                                      "available_actions": [
+                                        "Click",
+                                        "Toggle",
+                                        "RightClick",
+                                        "SetValue",
+                                        "SetFocus"
+                                      ],
+                                      "children": [
+                                        {
+                                          "available_actions": [
+                                            "Click",
+                                            "SetFocus"
+                                          ],
+                                          "description": "Close",
+                                          "name": "Close",
+                                          "ref_id": "@s2tgrpnyhb5392:e122",
+                                          "role": "button"
+                                        }
+                                      ],
+                                      "description": "Voice - Messages",
+                                      "name": "Voice - Messages",
+                                      "native_id": {
+                                        "kind": "ax_dom_identifier",
+                                        "value": "view_20"
+                                      },
+                                      "ref_id": "@s2tgrpnyhb5392:e121",
+                                      "role": "radiobutton",
+                                      "states": [
+                                        "checked",
+                                        "selected"
+                                      ],
+                                      "value": "true"
+                                    }
+                                  ],
+                                  "role": "tablist"
+                                },
+                                {
+                                  "available_actions": [
+                                    "SetFocus"
+                                  ],
+                                  "role": "group"
+                                }
+                              ],
+                              "native_id": {
+                                "kind": "ax_dom_identifier",
+                                "value": "view_21"
+                              },
+                              "role": "group"
+                            },
+                            {
+                              "available_actions": [
+                                "Click",
+                                "RightClick",
+                                "SetFocus"
+                              ],
+                              "description": "New Tab",
+                              "name": "New Tab",
+                              "ref_id": "@s2tgrpnyhb5392:e123",
+                              "role": "button"
+                            },
+                            {
+                              "available_actions": [
+                                "SetFocus"
+                              ],
+                              "role": "group"
+                            },
+                            {
+                              "available_actions": [
+                                "SetFocus"
+                              ],
+                              "children": [
+                                {
+                                  "available_actions": [
+                                    "Click",
+                                    "RightClick",
+                                    "SetFocus"
+                                  ],
+                                  "description": "Open Gemini in Chrome",
+                                  "name": "Open Gemini in Chrome",
+                                  "ref_id": "@s2tgrpnyhb5392:e124",
+                                  "role": "button"
+                                }
+                              ],
+                              "role": "group"
+                            }
+                          ],
+                          "role": "group"
+                        },
+                        {
+                          "available_actions": [
+                            "SetFocus"
+                          ],
+                          "role": "group",
+                          "states": [
+                            "offscreen"
+                          ]
+                        }
+                      ],
+                      "role": "group"
+                    }
+                  ],
+                  "role": "group"
+                }
+              ],
+              "role": "group"
+            }
+          ],
+          "name": "Voice - Messages - Google Chrome",
+          "role": "group"
+        },
+        {
+          "available_actions": [
+            "Click"
+          ],
+          "name": "Close",
+          "ref_id": "@s2tgrpnyhb5392:e125",
+          "role": "button"
+        },
+        {
+          "available_actions": [
+            "Click",
+            "RightClick"
+          ],
+          "children": [
+            {
+              "children": [
+                {
+                  "role": "group"
+                }
+              ],
+              "role": "group"
+            }
+          ],
+          "name": "Full Screen",
+          "ref_id": "@s2tgrpnyhb5392:e126",
+          "role": "button"
+        },
+        {
+          "available_actions": [
+            "Click"
+          ],
+          "name": "Minimize",
+          "ref_id": "@s2tgrpnyhb5392:e127",
+          "role": "button"
+        }
+      ],
+      "name": "Voice - Messages - Google Chrome",
+      "role": "window"
+    },
+    "window": {
+      "id": "w-5239",
+      "title": "Voice - Messages"
+    }
+  },
+  "ok": true,
+  "version": "2.5"
+}

@@ -1,0 +1,233 @@
+{
+  "name": "Call panel",
+  "role": "group",
+  "children": [
+    {
+      "role": "group",
+      "children": [
+        {
+          "role": "group",
+          "children": [
+            {
+              "name": "Ongoing call",
+              "role": "group",
+              "children": [
+                {
+                  "name": "Ongoing call",
+                  "role": "heading",
+                  "value": "3",
+                  "children": [
+                    {
+                      "name": "Ongoing call",
+                      "role": "statictext",
+                      "value": "Ongoing call"
+                    }
+                  ]
+                },
+                {
+                  "role": "group",
+                  "children": [
+                    {
+                      "role": "group",
+                      "children": [
+                        {
+                          "role": "group",
+                          "children": [
+                            {
+                              "role": "group"
+                            },
+                            {
+                              "role": "group"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "role": "group"
+                    }
+                  ]
+                },
+                {
+                  "role": "group",
+                  "children": [
+                    {
+                      "name": "Call with 3 1 4 5 5 5 0 1 2 3",
+                      "role": "statictext",
+                      "value": "Call with 3 1 4 5 5 5 0 1 2 3"
+                    }
+                  ]
+                },
+                {
+                  "role": "group",
+                  "children": [
+                    {
+                      "name": "Incoming call",
+                      "role": "statictext",
+                      "value": "Incoming call"
+                    }
+                  ]
+                },
+                {
+                  "name": "\u201cRecord\u201d is now \u201cNotes\u201d - record, transcribe, and get notes",
+                  "role": "statictext",
+                  "value": "\u201cRecord\u201d is now \u201cNotes\u201d - record, transcribe, and get notes"
+                },
+                {
+                  "name": "Close",
+                  "role": "button",
+                  "ref_id": "test-close"
+                },
+                {
+                  "role": "group",
+                  "children": [
+                    {
+                      "role": "group",
+                      "children": [
+                        {
+                          "name": "Transfer the Call",
+                          "role": "button",
+                          "states": [
+                            "disabled"
+                          ],
+                          "ref_id": "test-transfer-the-call"
+                        }
+                      ]
+                    },
+                    {
+                      "role": "group",
+                      "children": [
+                        {
+                          "name": "Hold call",
+                          "role": "checkbox",
+                          "states": [
+                            "disabled"
+                          ],
+                          "value": "0",
+                          "ref_id": "test-hold-call"
+                        }
+                      ]
+                    },
+                    {
+                      "role": "group",
+                      "children": [
+                        {
+                          "name": "Add a call",
+                          "role": "button",
+                          "states": [
+                            "disabled"
+                          ],
+                          "ref_id": "test-add-a-call"
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Open keypad",
+                      "role": "button",
+                      "states": [
+                        "disabled"
+                      ],
+                      "ref_id": "test-open-keypad"
+                    },
+                    {
+                      "role": "group",
+                      "states": [
+                        "disabled"
+                      ],
+                      "children": [
+                        {
+                          "name": "Keypad",
+                          "role": "statictext",
+                          "value": "Keypad"
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Mute call",
+                      "role": "checkbox",
+                      "states": [
+                        "disabled"
+                      ],
+                      "value": "0",
+                      "ref_id": "test-mute-call"
+                    },
+                    {
+                      "role": "group",
+                      "states": [
+                        "disabled"
+                      ],
+                      "children": [
+                        {
+                          "name": "Mute",
+                          "role": "statictext",
+                          "value": "Mute"
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Send a message",
+                      "role": "button",
+                      "ref_id": "test-send-a-message"
+                    },
+                    {
+                      "role": "group",
+                      "children": [
+                        {
+                          "name": "Message",
+                          "role": "statictext",
+                          "value": "Message"
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Record and take notes for the call",
+                      "role": "checkbox",
+                      "states": [
+                        "disabled"
+                      ],
+                      "value": "0",
+                      "ref_id": "test-record-and-take-notes-for-the-call"
+                    },
+                    {
+                      "role": "group",
+                      "states": [
+                        "disabled"
+                      ],
+                      "children": [
+                        {
+                          "name": "Notes",
+                          "role": "statictext",
+                          "value": "Notes"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "role": "group",
+                  "children": [
+                    {
+                      "name": "Hang up call",
+                      "role": "button",
+                      "ref_id": "test-hang-up-call"
+                    }
+                  ]
+                },
+                {
+                  "role": "group",
+                  "children": [
+                    {
+                      "name": "Answer call",
+                      "role": "button",
+                      "ref_id": "test-answer-call"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "bridge_path": "/absolute/path/to/shared-call-desk/voice_bridge.py",
+  "agent_id": "YOUR_ELEVENLABS_AGENT_ID",
+  "key_ref": "op://YOUR_VAULT/YOUR_ITEM/ELEVENLABS_API_KEY",
+  "op_path": "/opt/homebrew/bin/op",
+  "voice_name": "Elle",
+  "input_device": "Google Voice Return",
+  "output_device": "Elle Call Mic",
+  "reserve_per_minute_usd": 1.0,
+  "audio_cleanup_policy": "restore_original"
+}

@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "shared-call-desk": {
+      "type": "stdio",
+      "command": "/absolute/path/to/shared-call-desk/.venv/bin/python",
+      "args": [
+        "/absolute/path/to/shared-call-desk/server.py"
+      ],
+      "cwd": "/absolute/path/to/shared-call-desk"
+    }
+  }
+}
