@@ -19,13 +19,14 @@
   <a href="#what-it-does">Features</a> ·
   <a href="#how-it-fits-together">Architecture</a> ·
   <a href="#get-started">Setup</a> ·
+  <a href="#what-it-will-and-will-not-do-on-its-own">Guardrails</a> ·
   <a href="#the-mcp-interface">Tools</a> ·
   <a href="#what-is-proven-and-what-is-next">Status & roadmap</a>
 </p>
 
 ---
 
-> **Unofficial project — not a Google-supported solution.** Call Desk is independent and is not affiliated with, endorsed by, or supported by Google. It automates the Google Voice web interface; it is not an official Google Voice API integration.
+> **Unofficial project. Not a Google-supported solution.** Call Desk is independent and is not affiliated with, endorsed by, or supported by Google. It automates the Google Voice web interface; it is not an official Google Voice API integration.
 
 ### Point Claude or Codex here
 
@@ -178,9 +179,31 @@ CALL_DESK_SIGNING_IDENTITY="YOUR_SIGNING_IDENTITY" zsh mac-app/build.sh
 
 The app looks for the runtime at `~/CodingProjects/shared-call-desk`. Set `CALL_DESK_SERVICE_ROOT` in its launch environment for another location. Starting the app, including at login, does not arm answering. Registration alone does not establish working macOS permissions or restart recovery.
 
-## The MCP interface
+## What it will and will not do on its own
 
-SMS page changes now use bounded observation deadlines instead of a four-read cutoff. A source-verification navigation timeout can clean up only after verifying the enrolled account, Voice number, and idle Calls page. Security failures and unverified drafts retain the reservation. Browser conflicts return `browser_operation_active` or `browser_operation_in_progress`, and a failed operation never automatically retries a send.
+These rules are enforced by the service, whichever agent is calling.
+
+**It will not:**
+
+- **Dial for you.** The service has no dial API. The operating agent clicks Call in the browser once, after recording one dial intent.
+- **Redial or resend.** An uncertain call or text is kept for inspection. A failed browser operation never retries a send.
+- **Send a text that was not reviewed.** `text_send` needs the draft's exact digest and a stated authorization. Change one character and you need a new draft.
+- **Take a received text as an instruction.** Incoming messages are untrusted content. A text alone cannot authorize a tool action, an account change, or a reply.
+- **Run two calls at once.** One call holds the desk until its cleanup is finished. An armed incoming window blocks outgoing calls until it is disarmed.
+- **Pass the spending limit.** Known spend for the day plus the new reservation must stay at or under $100, or the call is refused. An outgoing call is capped at 300 seconds.
+- **Answer just because the app is open.** Incoming answering needs an explicit arm: a caller allowlist, a 1 to 60 minute window, and one call per arm. Caller ID is a routing hint, not authentication.
+- **Mark a text confirmed without evidence.** `text_confirm_sent` needs the original owner and digest, an existing send intent, and independent evidence. It cannot turn an unsent draft into a sent one.
+
+**It will:**
+
+- Read the local message cache by default. A refresh can navigate the browser and mark messages as read.
+- Resume the same operation when a request key is reused, and reject a reused key with different content.
+- Return the specific error and blocking draft ID when something is in the way, instead of a generic failure.
+- Keep the browser reservation after a security failure or an unverified draft, so nothing else uses the line until it is inspected.
+
+Owner labels coordinate agents that share one macOS account. They are not a security boundary between hostile users.
+
+## The MCP interface
 
 The running server’s schemas are the source of truth. Version 0.3.3 exposes **22 tools**:
 
@@ -190,16 +213,7 @@ The running server’s schemas are the source of truth. Version 0.3.3 exposes **
 | **Incoming · 3** | `incoming_arm`, `incoming_status`, `incoming_disarm` |
 | **Texts · 7** | `text_inbox`, `text_read`, `text_draft`, `text_send`, `text_status`, `text_recover_browser`, `text_confirm_sent` |
 
-### Useful details
-
-- **Exact drafts.** Recipient, body, and optional reply binding are retained under a digest. An edited message needs a new review.
-- **Idempotent requests.** Reusing a request key resumes the same operation; conflicting content is rejected.
-- **Specific errors.** A blocked number returns its actual error code and blocking draft ID, rather than a generic tool failure.
-- **Evidence-bound recovery.** `text_confirm_sent` requires the original owner/digest, an existing send intent, and independent evidence. It cannot turn an unsent draft into a sent message.
-- **Bounded incoming calls.** Arming requires an explicit caller allowlist and time/call limits. Caller ID is a routing hint, not authentication.
-- **Local trust model.** Owner labels coordinate agents sharing one OS account; they are not an authentication boundary between hostile users.
-
-Read the [workflow skill](plugin/skills/shared-call-desk/SKILL.md) and [tool/evidence contract](plugin/skills/shared-call-desk/references/contract.md) before operating the desk.
+Browser conflicts return `browser_operation_active` or `browser_operation_in_progress`. Read the [workflow skill](plugin/skills/shared-call-desk/SKILL.md) and [tool/evidence contract](plugin/skills/shared-call-desk/references/contract.md) before operating the desk.
 
 ## Validation
 
@@ -220,6 +234,7 @@ The smoke check places **no real calls or texts**. The badge above reflects a lo
 | Text sending | Real messages reached their recipients; one recipient confirmed arrival and another replied. Private messages are not included here. |
 | Recovery logic | Offline tests and the isolated MCP check cover shared ownership, uncertain dispatch, evidence records, and explicit cleanup. |
 | Incoming answering | Experimental. A completed end-to-end automatic incoming call remains unverified. |
+| SMS page changes | Bounded observation deadlines replace the old four-read cutoff. A navigation timeout during source verification cleans up only after the enrolled account, Voice number, and idle Calls page are verified. |
 | Native browser control | Requires the enrolled window/process/account. Foreground access and macOS Spaces can interrupt automation. |
 | Automatic receipts | The send call now runs bounded receipt verification automatically, including the same recipient-bound reopen used by status refresh. Delayed confirmation and recovery are tested offline; a fresh live send still needs to validate this change. Independent confirmation remains explicitly labeled. |
 | Restart recovery | Browser identity, sign-in, permissions, and provider authorization can need reconnection. |
